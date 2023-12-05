@@ -11,12 +11,12 @@ function Register() {
     event.preventDefault();
 
     if (password !== passwordConfirmation) {
-      console.error('Las contraseñas no coinciden');
+      console.error('Passwords do not match');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3000/users/sign_up', {
+      const response = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,14 +31,14 @@ function Register() {
       });
       const data = await response.json();
       if (response.ok) {
-        console.log('Registro exitoso:', data);
-        // Aquí puedes manejar la navegación post-registro o la actualización del estado global
+        console.log('Successful registration:', data);
+        // Handle post-registration navigation or global state update here
       } else {
-        console.error('Error en el registro:', data);
-        // Manejar errores aquí
+        console.error('Registration error:', data);
+        // Handle errors here
       }
     } catch (error) {
-      console.error('Error en el registro:', error);
+      console.error('Registration error:', error);
     }
   };
 

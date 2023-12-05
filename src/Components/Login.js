@@ -25,14 +25,14 @@ function Login() {
       });
       const data = await response.json();
       if (response.ok) {
-        console.log('Login exitoso:', data);
+        console.log('Login succes:', data);
        
       } else {
-        console.error('Error en el login:', data);
+        console.error('Login Error:', data);
       
       }
     } catch (error) {
-      console.error('Error en el login:', error);
+      console.error('Login Error:', error);
     }
   };
 
