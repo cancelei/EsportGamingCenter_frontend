@@ -1,11 +1,12 @@
-// src/components/Register.js
-
 import React, { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
+  const history = useHistory();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ function Register() {
       const data = await response.json();
       if (response.ok) {
         console.log('Successful registration:', data);
-        // Handle post-registration navigation or global state update here
+        history.push('/login'); // Redirect to login page
       } else {
         console.error('Registration error:', data);
         // Handle errors here
@@ -46,7 +47,6 @@ function Register() {
     <div>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        {/* campos del formulario */}
         <div>
           <label>Email:</label>
           <input
@@ -73,6 +73,9 @@ function Register() {
         </div>
         <button type="submit">Register</button>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Login here</Link>
+      </p>
     </div>
   );
 }
