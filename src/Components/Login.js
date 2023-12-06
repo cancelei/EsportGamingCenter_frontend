@@ -1,17 +1,17 @@
-// src/components/Login.js
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importa Link
+import { useHistory, Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/users/sign_in', { 
+      const response = await fetch('http://localhost:3000/users/sign_in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,10 +26,10 @@ function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log('Login succes:', data);
-       
+        history.push('/games'); // Redirect to games page
       } else {
         console.error('Login Error:', data);
-      
+        // Handle errors here
       }
     } catch (error) {
       console.error('Login Error:', error);
@@ -59,7 +59,7 @@ function Login() {
         <button type="submit">Login</button>
       </form>
       <p>
-        ¿Don't have an account? <Link to="/register">Sign up here</Link> {/* Enlace al registro */}
+        Don't have an account? <Link to="/register">Sign up here</Link>
       </p>
     </div>
   );
