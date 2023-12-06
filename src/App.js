@@ -2,25 +2,28 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Components/Login'; // Asegúrate de que este path sea correcto
 import Register from './Components/Register'; // Asegúrate de que este path sea correcto
-import logo from './logo.svg';
+import AddGamesForm from './Components/games/AddGamesForm';
+import Session from './Components/session/Session';
+import MainPage from './Components/games/MainPage';
+import DeleteGame from './Components/games/DeleteGame';
+import Reservations from './Components/reservations/Reservations';
+import GameDetails from './Components/details/GameDetails';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-
           <Routes>
+            <Route path="/" element={<Session />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* Redirige la ruta raíz a /login */}
-            <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route element={<RequireAuth />}>
+              <Route exact path="/addGame" element={<AddGamesForm />} />
+              <Route path="/mainPage" element={<MainPage />} />
+              <Route path="/details/:gameId" element={<GameDetails />} />
+              <Route path="/games/delete" element={<DeleteGame />} />
+              <Route path="/reservations" element={<Reservations />} />
+            </Route>
           </Routes>
-        </header>
-      </div>
-    </Router>
   );
 }
 
