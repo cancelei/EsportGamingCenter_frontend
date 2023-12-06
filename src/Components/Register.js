@@ -6,7 +6,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const history = useHistory();
+  const history = useHistory(); // Import useHistory from 'react-router-dom'
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,7 +33,7 @@ function Register() {
       const data = await response.json();
       if (response.ok) {
         console.log('Successful registration:', data);
-        history.push('/login'); // Redirect to login page
+        history.push('/login'); // Redirect to login page using useHistory
       } else {
         console.error('Registration error:', data);
         // Handle errors here
