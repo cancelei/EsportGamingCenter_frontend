@@ -1,0 +1,192 @@
+/* ------------------ Carousel Styles ------------------ */
+
+.carousel {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-slide img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .btn-slide {
+    border: unset;
+    outline: unset;
+    background-color: unset;
+  }
+  
+  .image-container {
+    height: 250px;
+  }
+  
+  .slide-title {
+    font-size: 80%;
+  }
+  
+  .slide-description {
+    font-size: 60%;
+  }
+  
+  .mycarousel {
+    margin-top: 7%;
+  }
+  
+  @media (max-width: 760px) {
+    .carousel-button-next,
+    .carousel-button-prev {
+      display: none;
+    }
+  
+    .mycarousel {
+      margin-top: 2%;
+    }
+  }
+
+  /* ------------------ Game Form Styles ------------------ */
+  
+  
+
+  /* ------------------ Session Styles ------------------ */
+  
+  .session-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #000;
+    font-family: 'Nunito', sans-serif;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .session-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #sesion-title {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .session-logo-container {
+    margin: 10% 0;
+    width: 45%;
+  }
+  
+  .session-logo {
+    width: 100%;
+  }
+  
+  .session-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .session_btn {
+    width: 100%;
+    background-color: limegreen;
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 5%;
+    padding: 1% 2%;
+    border-radius: 11px;
+    text-align: center;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .session-content {
+      width: 70%;
+    }
+  
+    .session-logo-container {
+      margin: 5% 0;
+      width: 25%;
+    }
+  
+    .session-logo {
+      width: 100%;
+    }
+  
+    .session_btn {
+      width: 70%;
+      margin-bottom: 2%;
+    }
+  }
+
+  /* ------------------ Details Page Styles ------------------ */
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .headerDetails {
+    color: #dec715;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .Details {
+    color: #333;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .Details h3 {
+    color: #dec715;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .Details p {
+    color: #141414;
+    padding: 7px;
+    margin: 5px 0;
+    background-color: rgb(163, 171, 227);
+    box-shadow: 0 5px 10px 0 rgb(135 222 21 / 44%);
+  }
+  
+  .Details img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .reserveButton {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e3e3e3;
+    background-color: rgb(163, 171, 227);
+  }
