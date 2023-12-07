@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-function AddGameForm({ onAddGame }) {
+function AddGameForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,16 +18,16 @@ function AddGameForm({ onAddGame }) {
           game: {
             title: title,
             description: description,
+            imageUrl: imageUrl,
           },
         }),
       });
 
-      const data = await response.json();
       if (response.ok) {
-        console.log('Game added successfully:', data);
-        onAddGame(data); // Notify parent component about the new game
+        console.log('Game added successfully');
+        // Handle any additional logic or redirection after adding the game
       } else {
-        console.error('Error adding game:', data);
+        console.error('Error adding game');
       }
     } catch (error) {
       console.error('Error adding game:', error);
@@ -35,7 +36,7 @@ function AddGameForm({ onAddGame }) {
 
   return (
     <div>
-      <h2>Add New Game</h2>
+      <h2>Add Game</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
@@ -50,6 +51,14 @@ function AddGameForm({ onAddGame }) {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Image URL:</label>
+          <input
+            type="text"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
         <button type="submit">Add Game</button>
