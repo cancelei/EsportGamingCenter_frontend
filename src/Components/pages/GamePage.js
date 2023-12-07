@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DeleteGame from './DeleteGame';
+import DeleteGame from '../components/DeleteGame';
 
 function GamePage() {
   const [games, setGames] = useState([]);
@@ -30,11 +30,9 @@ function GamePage() {
       });
 
       if (response.ok) {
-        // If the backend deletion is successful, update the state to remove the deleted game
         setGames((prevGames) => prevGames.filter((game) => game.id !== deletedGameId));
       } else {
         console.error('Error deleting game on the backend');
-        // Handle errors here
       }
     } catch (error) {
       console.error('Error deleting game:', error);
@@ -48,6 +46,7 @@ function GamePage() {
         {games.map((game) => (
           <li key={game.id}>
             <strong>{game.title}</strong>: {game.description}
+            <img src={game.imageUrl} alt={game.title} />
             <DeleteGame gameId={game.id} onDelete={() => handleDelete(game.id)} />
           </li>
         ))}
