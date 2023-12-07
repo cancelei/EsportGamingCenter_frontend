@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import { fetchGameById } from '../../redux/features/gamesSlice';
+import { fetchGameById } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 
 function GameDetails() {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import AuthCntxt from '../context/AuthPro';
 
-const comAuth = () => useContext(AuthCntxt);
+const useAuth = () => useContext(AuthCntxt);
 
-export default comAuth;
+export default useAuth;
