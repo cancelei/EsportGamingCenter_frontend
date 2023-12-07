@@ -14,8 +14,8 @@ import './App.css';
 
 function App() {
   return (
-    <Routes>
-      <Router>
+    <Router>
+      <Routes>
         <Route path="/" element={<Session />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -26,8 +26,8 @@ function App() {
         <Route path="/games/delete" element={<DeleteGame />} />
         <Route path="/reservations" element={<Reservations />} />
         {/* </Route> */}
-      </Router>
-    </Routes>
+      </Routes>
+    </Router>
   );
 }
 
