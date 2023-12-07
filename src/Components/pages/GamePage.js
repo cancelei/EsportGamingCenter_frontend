@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DeleteGame from '../components/DeleteGame';
+import DeleteGame from '../DeleteGame';
 
 function GamePage() {
   const [games, setGames] = useState([]);

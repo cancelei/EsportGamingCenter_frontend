@@ -18,7 +18,7 @@ function AddGameForm() {
           game: {
             title: title,
             description: description,
-            imageUrl: imageUrl,
+            image_url: imageUrl,
           },
         }),
       });

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Login from './Components/Login';
 import Register from './Components/Register';
 import AddGameForm from './Components/AddGameForm';
-import GamePage from './pages/GamePage';
+import GamePage from './Components/pages/GamePage';
 
 function App() {
   return (

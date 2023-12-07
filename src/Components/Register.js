@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const history = useHistory(); // Import useHistory from 'react-router-dom'
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,10 +33,10 @@ function Register() {
       const data = await response.json();
       if (response.ok) {
         console.log('Successful registration:', data);
-        history.push('/login'); // Redirect to login page using useHistory
+        navigate('/login'); 
       } else {
         console.error('Registration error:', data);
-        // Handle errors here
+        
       }
     } catch (error) {
       console.error('Registration error:', error);

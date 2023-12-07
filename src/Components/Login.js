@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,10 +26,10 @@ function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log('Login succes:', data);
-        history.push('/games'); // Redirect to games page
+        navigate('/games'); 
       } else {
         console.error('Login Error:', data);
-        // Handle errors here
+        
       }
     } catch (error) {
       console.error('Login Error:', error);
