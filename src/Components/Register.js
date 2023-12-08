@@ -24,8 +24,8 @@ function Register() {
         },
         body: JSON.stringify({
           user: {
-            email: email,
-            password: password,
+            email,
+            password,
             password_confirmation: passwordConfirmation,
           },
         }),
@@ -48,28 +48,38 @@ function Register() {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+
+          <label name="email" htmlFor="emailId" aria-controls="email">
+            Email:
+            <input
+              type="email"
+              value={email}
+              id="emailId"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
         </div>
         <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <label htmlFor="passwordId" aria-controls="password">
+            Password:
+            <input
+              type="password"
+              value={password}
+              id="passwordId"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
         </div>
         <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
+          <label htmlFor="passwordconfirmationId" aria-controls="passwordconfirmation">
+            Confirm Password:
+            <input
+              type="password"
+              value={passwordConfirmation}
+              id="passwordconfirmationId"
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
+          </label>
         </div>
         <button type="submit">Register</button>
       </form>
