@@ -83,14 +83,10 @@ button {
   }
 }
 
-@media (min-width: 1024px) {
-
+/* @media (min-width: 1024px) {
 }
-
 @media (min-width: 1400px) {
-
-}
-
+} */
 .border-color {
   border: 1px solid rgb(146, 45, 11);
 }
