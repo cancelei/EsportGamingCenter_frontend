@@ -1,109 +1,93 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
+import { useNavigate, Link } from 'react-router-dom';
 
-function SignUp() {
-  const { reset } = useForm();
-  const navigate = useNavigate();
-  const [data, setData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+function Register() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!data.name || !data.email || !data.password) {
-      toast.warn('Please fill in all fields');
+  const navigate = useNavigate(); 
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password !== passwordConfirmation) {
+      console.error('Passwords do not match');
+      return;
     }
+
     try {
-      const response = await fetch(' render URL + .com/auth/signup', {
+      const response = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user: {
-            name: data.name,
-            email: data.email,
-            password: data.password,
+            email,
+            password,
+            password_confirmation: passwordConfirmation,
           },
         }),
       });
-
+      const data = await response.json();
       if (response.ok) {
-        toast.success(
-          'You signed up successfully, you can now log-in with the email and password you just used',
-        );
-        localStorage.setItem('token', response.headers.get('Authorization'));
-        reset();
-        navigate('/login');
+        console.log('Successful registration:', data);
+        navigate('/login'); 
+      } else {
+        console.error('Registration error:', data);
+        
       }
-
-      return null;
     } catch (error) {
-      toast.error(
-        'An error occured while creating the account, please try again',
-      );
-      reset();
+      console.error('Registration error:', error);
     }
-    return null;
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
   };
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={data.name}
-            onChange={handleInputChange}
-          />
+
+          <label name="email" htmlFor="emailId" aria-controls="email">
+            Email:
+            <input
+              type="email"
+              value={email}
+              id="emailId"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
         </div>
         <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={data.email}
-            onChange={handleInputChange}
-          />
+          <label htmlFor="passwordId" aria-controls="password">
+            Password:
+            <input
+              type="password"
+              value={password}
+              id="passwordId"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
         </div>
         <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={data.password}
-            onChange={handleInputChange}
-          />
+          <label htmlFor="passwordconfirmationId" aria-controls="passwordconfirmation">
+            Confirm Password:
+            <input
+              type="password"
+              value={passwordConfirmation}
+              id="passwordconfirmationId"
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+            />
+          </label>
         </div>
-        <div>
-          <button type="submit">
-            Sign up
-          </button>
-        </div>
+        <button type="submit">Register</button>
       </form>
-      <div>
-        <p>Already have an account?</p>
-        <Link to="/login">
-          <button type="submit">Log in</button>
-        </Link>
-      </div>
+      <p>
+        Already have an account? <Link to="/login">Login here</Link>
+      </p>
     </div>
   );
 }
 
-export default SignUp;
+export default Register;

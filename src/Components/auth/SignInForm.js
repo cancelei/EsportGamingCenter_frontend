@@ -1,108 +1,79 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
+import { useNavigate, Link } from 'react-router-dom';
 
-function LogIn() {
-  const { reset } = useForm();
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
-  const [data, setData] = useState({
-    email: '',
-    password: '',
-  });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!data.email || !data.password) {
-      toast.warn('Please fill in all fields');
-    }
     try {
-      const response = await fetch(' render URL + .com/auth/login', {
+      const response = await fetch('http://localhost:3000/users/sign_in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           user: {
-            email: data.email,
-            password: data.password,
+            email,
+            password,
           },
         }),
       });
-
+      const data = await response.json();
       if (response.ok) {
-        const token = response.headers.get('Authorization');
-        if (token) {
-          toast.success(
-            'You logged in successfully',
-          );
-          reset();
-          localStorage.setItem('token', token);
-          navigate('/mainPage');
-        } else {
-          setError('Authentication failed. Please try again.');
-        }
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message);
-      }
-    } catch (error) {
-      toast.error(
-        'An error occured while creating the account, please try again',
-      );
-      reset();
-    }
-  };
+        console.log('Login succes:', data);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
+      } else {
+        console.error('Login Error:', data);
+
+        navigate('/games'); 
+      } 
+      
+    } catch (error) {
+      console.error('Login Error:', error);
+    }
   };
 
   return (
     <div>
-      <h1>Sign In with Email and Password</h1>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <input
-            placeholder="Email"
-            type="email"
-            name="email"
-            value={data.email}
-            onChange={handleInputChange}
-          />
+          <label name="email" htmlFor="emailId" aria-controls="email">
+            Email:
+            <input
+              type="email"
+              value={email}
+              id="emailId"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
         </div>
         <div>
-          <input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={data.password}
-            onChange={handleInputChange}
-          />
+          <label htmlFor="passwordId" aria-controls="password">
+            Password:
+            <input
+              type="password"
+              value={password}
+              id="passwordId"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
         </div>
-        {error && <p className="error">{error}</p>}
-        {' '}
-        <div>
-          <button type="submit">
-            Log in
-          </button>
-        </div>
+        <button type="submit">Login</button>
       </form>
-      <div>
-        <p>Not registered?</p>
-        <Link to="/sign_up">
-          <button type="submit">Sign up</button>
-        </Link>
-      </div>
+      <p>
+        Do not have an account?
+        {' '}
+        <Link to="/register">Sign up here</Link>
+        {' '}
+      </p>
     </div>
   );
 }
 
-export default LogIn;
+export default Login;
