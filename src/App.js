@@ -13,7 +13,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/add-game" element={<AddGameForm />} />
-          <Route path="/game" element={<GamePage />} />
+          <Route path="/games" element={<GamePage />} />
           <Route path="/" element={<Navigate to="/login" replace />} />
         </Routes>
       </div>
