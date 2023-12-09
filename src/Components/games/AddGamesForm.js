@@ -9,7 +9,7 @@ function AddGameForm() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/games', {
+      const response = await fetch('http://localhost:3000/api/games', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

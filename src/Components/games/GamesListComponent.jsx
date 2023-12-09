@@ -7,8 +7,9 @@ function GamesListComponent() {
 
     const fetchGames = async () => {
         try {
-            const response = await axios.get('/api/games'); // Replace '/api/games' with your backend API endpoint
+            const response = await axios.get('http://localhost:3000/api/games'); // Replace '/api/games' with your backend API endpoint
             setGames(response.data);
+            console.log(response.data)
         } catch (error) {
             console.error(error);
         }
@@ -20,7 +21,7 @@ function GamesListComponent() {
 
     const deleteGame = async (gameId) => {
         try {
-            await axios.delete(`/api/games/${gameId}`); // Replace '/api/games' with your backend API endpoint
+            await axios.delete(`http://localhost:3000/api/games/${gameId}`); // Replace '/api/games' with your backend API endpoint
             fetchGames();
         } catch (error) {
             console.error(error);
@@ -88,10 +89,10 @@ function GamesListComponent() {
             <ul style={styles.list}>
                 {games.map((game) => (
                     <li key={game.id} style={styles.listItem}>
-                        <h3 style={styles.gameHeader}>{game.name}</h3>
+                        <h3 style={styles.gameHeader}>{game.title}</h3>
                         <p style={styles.gameDescription}>{game.description}</p>
                         <p>{game.genre}</p>
-                        <img style={styles.gameImage} src={game.imageLink} alt={game.name} />
+                        <img style={styles.gameImage} src={game.image_url} alt={game.title} />
                         <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
                     </li>
                 ))}
