@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function DeleteGame({ gameId, onDeleteGame }) {
   const handleDelete = async () => {
@@ -19,8 +20,13 @@ function DeleteGame({ gameId, onDeleteGame }) {
   };
 
   return (
-    <button onClick={handleDelete}>Delete</button>
+    <button type="button" onClick={handleDelete}>Delete</button>
   );
 }
+
+DeleteGame.propTypes = {
+  gameId: PropTypes.number.isRequired,
+  onDeleteGame: PropTypes.func.isRequired,
+};
 
 export default DeleteGame;

@@ -9,15 +9,15 @@ function AddGameForm() {
     event.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/games', {
+      const response = await fetch('http://localhost:3000/api/games', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           game: {
-            title: title,
-            description: description,
+            title,
+            description,
             image_url: imageUrl,
           },
         }),
@@ -39,7 +39,7 @@ function AddGameForm() {
       <h2>Add Game</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Title:</label>
+          <label htmlFor="title">Title:</label>
           <input
             type="text"
             value={title}
@@ -47,14 +47,14 @@ function AddGameForm() {
           />
         </div>
         <div>
-          <label>Description:</label>
+          <label htmlFor="description">Description:</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div>
-          <label>Image URL:</label>
+          <label htmlFor="imageUrl">Image URL:</label>
           <input
             type="text"
             value={imageUrl}
