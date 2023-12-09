@@ -52,7 +52,7 @@ function Navbar() {
           <img src={logo} alt="" className="sidebar-logo" />
         </div>
         <div className="sidebar-links-container">
-          <Link to="/mainPage" className={`nav-link ${location.pathname === '/mainPage' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
+          <Link to="/gameList" className={`nav-link ${location.pathname === '/gameList' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
           <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
           <Link to="/games/delete" className={`nav-link ${location.pathname === '/games/delete' ? 'active' : ''}`} onClick={closeSidebar}>Delete Game</Link>
           <Link to="/reservations" className={`nav-link ${location.pathname === '/reservations' ? 'active' : ''}`} onClick={closeSidebar}>Reservations</Link>
