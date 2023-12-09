@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DeleteGame from '../DeleteGame';
+import DeleteGame from '../games/DeleteGame';
 
 function GamePage() {
   const [games, setGames] = useState([]);
@@ -45,7 +45,9 @@ function GamePage() {
       <ul>
         {games.map((game) => (
           <li key={game.id}>
-            <strong>{game.title}</strong>: {game.description}
+            <strong>{game.title}</strong>
+            :
+            {game.description}
             <img src={game.imageUrl} alt={game.title} />
             <DeleteGame gameId={game.id} onDelete={() => handleDelete(game.id)} />
           </li>

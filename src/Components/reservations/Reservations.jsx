@@ -36,9 +36,19 @@ function Reservations() {
         <ul>
           {reservations.map((reservation) => (
             <li key={reservation.id}>
-              <strong>Game:</strong> {reservation.game.title} <br />
-              <strong>Date:</strong> {new Date(reservation.reservation_date).toLocaleDateString()} <br />
-              <strong>Config PC:</strong> {reservation.setup_config}
+              <strong>Game:</strong>
+              {' '}
+              {reservation.game.title}
+              {' '}
+              <br />
+              <strong>Date:</strong>
+              {' '}
+              {new Date(reservation.reservation_date).toLocaleDateString()}
+              {' '}
+              <br />
+              <strong>Config PC:</strong>
+              {' '}
+              {reservation.setup_config}
             </li>
           ))}
         </ul>

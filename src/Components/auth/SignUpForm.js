@@ -6,7 +6,7 @@ function Register() {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,10 +33,9 @@ function Register() {
       const data = await response.json();
       if (response.ok) {
         console.log('Successful registration:', data);
-        navigate('/login'); 
+        navigate('/login');
       } else {
         console.error('Registration error:', data);
-        
       }
     } catch (error) {
       console.error('Registration error:', error);
@@ -84,7 +83,9 @@ function Register() {
         <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account? <Link to="/login">Login here</Link>
+        Already have an account?
+        {' '}
+        <Link to="/login">Login here</Link>
       </p>
     </div>
   );
