@@ -10,6 +10,7 @@ const initialState = {
   error: null,
 };
 
+// Asumiendo que tienes una ruta en Rails configurada como '/api/games'
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   const url = 'http://127.0.0.1:3000/api/games'; // URL actualizada para el espacio de nombres 'api'
   try {
@@ -20,38 +21,13 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   }
 });
 
-export const fetchGameById = createAsyncThunk('games/fetchGameById', async (data) => {
-  const url = `http://127.0.0.1:3000/api/v1/users/${data.userId}/games/${data.gameId}`;
+// Asumiendo que tienes una ruta en Rails configurada como '/api/games/:id'
+export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId) => {
+  const url = `http://127.0.0.1:3000/api/games/${gameId}`;
   try {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    throw Error(error);
-  }
-});
-
-export const addNewGames = createAsyncThunk('games/addNewGames', async (data) => {
-  const { authToken } = data.id;
-  try {
-    const config = {
-      headers: {
-        authorization: authToken,
-        'Content-Type': 'application/json',
-      },
-    };
-    const baseUrl = `http://127.0.0.1:3000/api/v1/users/${data.id}/games`;
-
-    const response = await axios.post(
-      baseUrl,
-      JSON.stringify({
-        game: data.game,
-      }),
-      config,
-    );
-    toast.success(`Game Successfully ${response.statusText} `);
-    return response.data;
-  } catch (error) {
-    toast.error('Opps failed to create Game');
     throw Error(error);
   }
 });
@@ -98,20 +74,9 @@ const gamesSlice = createSlice({
     [fetchGameById.rejected]: (state) => {
       state.isLoading = false;
     },
-    // Add New Game
-    [addNewGames.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [addNewGames.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.games.push(action.payload);
-    },
-    [addNewGames.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.error.message;
-    },
   },
 });
 
+export const { gameCreated, reservedGame, gameRemoved } = gamesSlice.actions;
 export const getAllGames = (state) => state.games.games;
 export default gamesSlice.reducer;

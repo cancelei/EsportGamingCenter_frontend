@@ -1,9 +1,12 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import './GameCarousel.css'; // Importa aquí el archivo CSS
 
 function GameCarousel({ games }) {
+  const navigate = useNavigate(); // Inicializa navigate usando useNavigate
+
   const settings = {
     dots: true,
     infinite: true,
@@ -32,12 +35,16 @@ function GameCarousel({ games }) {
     ]
   };
 
+  const handleGameClick = (gameId) => {
+    navigate(`/details/${gameId}`); // Redirige a la página de detalles
+  };
+
   return (
     <div>
-      <h2> Game Catalog </h2>
+      <h2>Game Catalog</h2>
       <Slider {...settings}>
         {games.map(game => (
-          <div key={game.id} className="game-slide">
+          <div key={game.id} onClick={() => handleGameClick(game.id)} className="game-slide">
             <img src={game.image_url} alt={game.title} />
             <h3>{game.title}</h3>
             <p>{game.description}</p>
@@ -48,25 +55,17 @@ function GameCarousel({ games }) {
   );
 }
 
-// Flecha siguiente personalizada
 function SampleNextArrow(props) {
   const { className, onClick } = props;
   return (
-    <div
-      className={`${className} custom-arrow next`}
-      onClick={onClick}
-    />
+    <div className={`${className} custom-arrow next`} onClick={onClick} />
   );
 }
 
-// Flecha anterior personalizada
 function SamplePrevArrow(props) {
   const { className, onClick } = props;
   return (
-    <div
-      className={`${className} custom-arrow prev`}
-      onClick={onClick}
-    />
+    <div className={`${className} custom-arrow prev`} onClick={onClick} />
   );
 }
 
