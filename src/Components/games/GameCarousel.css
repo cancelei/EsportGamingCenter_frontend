@@ -1,0 +1,28 @@
+.custom-arrow {
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  font-size: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.custom-arrow.next {
+  right: 25px;
+}
+
+.custom-arrow.prev {
+  left: 25px;
+}
+
+.game-slide {
+  padding: 15px;
+  text-align: center;
+}
+
+.game-slide img {
+  max-width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}

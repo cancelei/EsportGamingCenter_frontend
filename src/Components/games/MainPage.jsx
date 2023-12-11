@@ -1,30 +1,25 @@
-import { React } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Navbar from '../Navbar';
-import GameItem from './GameItem';
+import GameCarousel from './GameCarousel';
+import { fetchGames } from '../../redux/fts/gamesSlice'; // Importar la acción fetchGames de Redux
 import '../../assets/css/carousel.css';
 
 function MainPage() {
+  const dispatch = useDispatch();
   const { games } = useSelector((state) => state.games);
+
+  useEffect(() => {
+    dispatch(fetchGames()); // Cargar juegos desde el backend
+  }, [dispatch]);
 
   return (
     <>
       <Navbar />
-      <div className="main-page-container">MainPage</div>
-      {games.map((game) => (
-        <GameItem
-          key={game.id}
-          game={game}
-          classNames={{
-            button: 'btn btn-outline-primary',
-            gameBody: 'card-body',
-            imageContainer: 'image-container',
-            image: 'card-img-top',
-            title: 'card-title',
-            discription: 'card-text',
-          }}
-        />
-      ))}
+      <div className="main-page-container">
+        <h1>Main Page</h1>
+        <GameCarousel games={games} />
+      </div>
     </>
   );
 }

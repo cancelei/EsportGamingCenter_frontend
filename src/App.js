@@ -12,6 +12,8 @@ import Reservations from './Components/reservations/Reservations';
 import GameDetails from './Components/details/GameDetails';
 import './App.css';
 import GamesListComponent from './Components/games/GamesListComponent';
+import 'slick-carousel/slick/slick.css'; 
+import 'slick-carousel/slick/slick-theme.css';
 
 function App() {
   return (

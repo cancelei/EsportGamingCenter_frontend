@@ -5,7 +5,6 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -13,6 +12,7 @@ function Register() {
 
     if (password !== passwordConfirmation) {
       console.error('Passwords do not match');
+      // Mostrar mensaje de error en la interfaz
       return;
     }
 
@@ -22,23 +22,21 @@ function Register() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          user: {
-            email,
-            password,
-            password_confirmation: passwordConfirmation,
-          },
-        }),
+        body: JSON.stringify({ user: { email, password, password_confirmation: passwordConfirmation } }),
       });
-      const data = await response.json();
+
       if (response.ok) {
+        const data = await response.json();
         console.log('Successful registration:', data);
-        navigate('/login');
+        navigate('/login'); // Navegar a la página de inicio de sesión
       } else {
-        console.error('Registration error:', data);
+        const errorData = await response.json();
+        console.error('Registration error:', errorData);
+        // Mostrar mensaje de error en la interfaz
       }
     } catch (error) {
       console.error('Registration error:', error);
+      // Mostrar mensaje de error en la interfaz
     }
   };
 
@@ -47,8 +45,7 @@ function Register() {
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
-
-          <label name="email" htmlFor="emailId" aria-controls="email">
+          <label htmlFor="emailId">
             Email:
             <input
               type="email"
@@ -59,7 +56,7 @@ function Register() {
           </label>
         </div>
         <div>
-          <label htmlFor="passwordId" aria-controls="password">
+          <label htmlFor="passwordId">
             Password:
             <input
               type="password"
@@ -70,12 +67,12 @@ function Register() {
           </label>
         </div>
         <div>
-          <label htmlFor="passwordconfirmationId" aria-controls="passwordconfirmation">
+          <label htmlFor="passwordConfirmationId">
             Confirm Password:
             <input
               type="password"
               value={passwordConfirmation}
-              id="passwordconfirmationId"
+              id="passwordConfirmationId"
               onChange={(e) => setPasswordConfirmation(e.target.value)}
             />
           </label>
@@ -83,9 +80,7 @@ function Register() {
         <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account?
-        {' '}
-        <Link to="/login">Login here</Link>
+        Already have an account? <Link to="/login">Login here</Link>
       </p>
     </div>
   );
