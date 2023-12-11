@@ -1,39 +1,29 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost:3000/users/sign_in', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    await fetch('http://localhost:3000/users/sign_in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user: {
+          email,
+          password,
         },
-        body: JSON.stringify({
-          user: {
-            email,
-            password,
-          },
-        }),
-      });
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Login succes:', data);
-      } else {
-        console.error('Login Error:', data);
-
-        navigate('/games');
-      }
-    } catch (error) {
+      }),
+    }).then((resp) => {
+      console.log('Login succes:', resp);
+    }).catch((error) => {
       console.error('Login Error:', error);
-    }
+    });
   };
 
   return (
