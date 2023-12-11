@@ -1,22 +1,62 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
 import { fetchGameById } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 
 function GameDetails() {
   const dispatch = useDispatch();
-  const { userId, gameId } = useParams();
+  const navigate = useNavigate();
+  const { gameId } = useParams();
   const gameDetails = useSelector((state) => state.games.gameById);
 
   useEffect(() => {
-    if (userId && gameId) {
-      dispatch(fetchGameById({ userId, gameId }));
+    dispatch(fetchGameById(gameId));
+  }, [dispatch, gameId]);
+
+  const handleReserve = async () => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("Por favor, inicie sesión para realizar una reserva.");
+      return;
     }
-  }, [dispatch, userId, gameId]);
+
+    const reservationDate = new Date().toISOString().split('T')[0];
+    const setupConfig = "Configuración estándar";
+    const status = "Pendiente";
+
+    try {
+      const response = await fetch(`http://localhost:3000/reservations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reservation: {
+            game_id: gameId,
+            user_id: userId,
+            reservation_date: reservationDate,
+            setup_config: setupConfig,
+            status: status
+          }
+        }),
+      });
+
+      if (response.ok) {
+        alert('Reserva realizada con éxito!');
+        navigate('/reservations');
+      } else {
+        const errorData = await response.json();
+        console.error('Error al realizar la reserva:', errorData);
+        alert('Error al realizar la reserva');
+      }
+    } catch (error) {
+      console.error('Error al realizar la reserva:', error);
+      alert('Error al realizar la reserva');
+    }
+  };
+
 
   return (
     <>
@@ -27,18 +67,12 @@ function GameDetails() {
           <p>Loading...</p>
         ) : (
           <div className="Details">
-            <img src={gameDetails.image} alt={gameDetails.name} />
-            <h3>{gameDetails.name}</h3>
-            <p>Genre: {gameDetails.genre}</p>
-            <p>Finance Fee: {gameDetails.finance_fee}</p>
-            <p>Option to Purchase: {gameDetails.option_to_purchase}</p>
-            <p>Total Amount Payable: {gameDetails.total_amount_payable}</p>
-            <p>Duration: {gameDetails.duration} days</p>
+            {/* Asegúrate de que estos nombres coincidan con la estructura de datos de tu backend */}
+            <img src={gameDetails.image_url} alt={gameDetails.title} />
+            <h3>{gameDetails.title}</h3>
             <p>Description: {gameDetails.description}</p>
-            {/* Link to the Reserve Page */}
-            <Link to="../reservations/Reservations.jsx">
-              <button className="reserveButton">Reserved</button>
-            </Link>
+            {/* Resto de los detalles del juego */}
+            <button className="reserveButton" onClick={handleReserve}>Reservar</button>
           </div>
         )}
       </div>
