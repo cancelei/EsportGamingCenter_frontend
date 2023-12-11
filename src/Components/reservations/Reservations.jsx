@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Proptype from 'prop-types';
 import Navbar from '../Navbar';
 
 function Reservations() {
@@ -12,7 +13,7 @@ function Reservations() {
 
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/reservations', {
+      const response = await fetch('http://localhost:3000/api/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +42,7 @@ function Reservations() {
   const handleUpdate = async (event, id) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/reservations/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/reservations/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ function Reservations() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/reservations/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/reservations/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -121,5 +122,16 @@ function Reservations() {
     </>
   );
 }
+
+Proptype.propTypes = {
+  reservation: Proptype.shape({
+    id: Proptype.number,
+    reservation_date: Proptype.string,
+    setup_config: Proptype.string,
+    game_id: Proptype.number,
+    user_id: Proptype.number,
+    status: Proptype.string,
+  }),
+};
 
 export default Reservations;
