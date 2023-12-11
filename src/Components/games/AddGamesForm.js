@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 function AddGameForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +17,6 @@ function AddGameForm() {
           game: {
             title,
             description,
-            image_url: imageUrl,
           },
         }),
       });
@@ -51,14 +49,6 @@ function AddGameForm() {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="imageUrl">Image URL:</label>
-          <input
-            type="text"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
           />
         </div>
         <button type="submit">Add Game</button>
