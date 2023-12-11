@@ -7,10 +7,11 @@ function AddGameForm() {
   const [imageUrl, setImageUrl] = useState('');
 
   const imageOptions = [
-    'image1.jpg', // Replace with actual image names in your project
-    'image2.jpg',
-    'image3.jpg',
-    // Add more image names as needed
+    'sky3.png',
+    'sniper2.png',
+    'weapon.png',
+    'Victory.png',
+    // For Adding more image
   ];
 
   const handleSubmit = async (event) => {
