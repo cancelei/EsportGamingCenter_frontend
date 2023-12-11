@@ -40,6 +40,7 @@ function AddGameForm() {
           <label htmlFor="title">Title:</label>
           <input
             type="text"
+            id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -47,6 +48,7 @@ function AddGameForm() {
         <div>
           <label htmlFor="description">Description:</label>
           <textarea
+            id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
