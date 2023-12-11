@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
-import FindGameComponent from './FindgameComponent';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-function ParentComponent() {
-  const [selectedGameId, setSelectedGameId] = useState(null);
+function ReservationForm() {
+  const [reservationDate, setReservationDate] = useState('');
+  const [setupConfig, setSetupConfig] = useState('');
+  const [platform, setPlatform] = useState(''); // New state for platform
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleGameChange = (gameId) => {
-    setSelectedGameId(gameId);
-  };
+  // Get gameId from URL
+  const gameId = new URLSearchParams(location.search).get('gameId');
+  const userId = localStorage.getItem("userId"); // Assume user is logged in
 
-  return (
-    <div>
-      {/* Other components or content */}
-      <ReservationForm selectedGameId={selectedGameId} onGameSelect={handleGameChange} />
-      {/* Other components or content */}
-    </div>
-  );
-}
-
-function ReservationForm({ selectedGameId, onGameSelect }) {
-  const [reservation_date, setReservation_date] = useState('');
-  const [setup_config, setSetup_config] = useState('');
-  const [user_id, setUser_id] = useState('');
-  const [status, setStatus] = useState('');
+  useEffect(() => {
+    if (!userId) {
+      alert("Please log in to make a reservation.");
+      navigate('/login');
+    }
+  }, [userId, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const reservationData = {
+      reservation: {
+        game_id: gameId,
+        user_id: userId,
+        reservation_date: reservationDate,
+        setup_config: setupConfig,
+        platform, // Include platform in reservation data
+        status: 'Pending' // Default status for new reservations
+      }
+    };
 
     try {
       const response = await fetch('http://localhost:3000/api/reservations', {
@@ -32,68 +39,57 @@ function ReservationForm({ selectedGameId, onGameSelect }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          reservation: {
-            reservation_date,
-            setup_config,
-            game_id: selectedGameId, // Use selectedGameId here
-            user_id,
-            status,
-          },
-        }),
+        body: JSON.stringify(reservationData)
       });
 
       if (response.ok) {
-        console.log('Reservation added successfully');
+        alert('Reservation successfully made!');
+        navigate('/reservations');
       } else {
-        console.error('Error adding reservation');
+        console.error('Error making reservation');
       }
     } catch (error) {
-      console.error('Error adding reservation:', error);
+      console.error('Error making reservation:', error);
     }
   };
-  
+
   return (
     <div>
-      <h2>Add New Reservation</h2>
+      <h2>Make New Reservation</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="date">Reservation Date: </label>
+          <label htmlFor="date">Reservation Date:</label>
           <input
             type="date"
-            value={reservation_date}
-            onChange={(e) => setReservation_date(e.target.value)}
+            value={reservationDate}
+            onChange={(e) => setReservationDate(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="setup_config">Set Up Config:</label>
-          <textarea
-            type="text"
-            value={setup_config}
-            onChange={(e) => setSetup_config(e.target.value)}
-          />
-        </div>
-        <FindGameComponent onGameSelect={onGameSelect} />
-        <div>
-          <label htmlFor="user_id">User Info: </label>
-          <input
-            type="integer"
-            value={user_id}
-            onChange={(e) => setUser_id(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="status">Reservation Status: </label>
+          <label htmlFor="setup_config">PC Setup:</label>
           <input
             type="text"
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            value={setupConfig}
+            onChange={(e) => setSetupConfig(e.target.value)}
           />
         </div>
-        <button type="submit">Add Reservation</button>
+        <div>
+          <label htmlFor="platform">Platform:</label>
+          <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
+            <option value="">Select Platform</option>
+            <option value="PC">PC</option>
+            <option value="Xbox Series S/X">Xbox Series S/X</option>
+            <option value="PS4">PS4</option>
+            <option value="PS5">PS5</option>
+            <option value="Nintendo Switch">Nintendo Switch</option>
+            <option value="iOS">iOS</option>
+            <option value="Android">Android</option>
+          </select>
+        </div>
+        <button type="submit">Reserve</button>
       </form>
     </div>
   );
 }
 
-export default ParentComponent;
+export default ReservationForm;

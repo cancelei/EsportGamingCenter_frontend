@@ -30,7 +30,7 @@ function App() {
         <Route path="/details/:gameId" element={<GameDetails />} />
         <Route path="/games/delete" element={<DeleteGame />} />
         <Route path="/reservations" element={<Reservations />} />
-        <Route path="/newreservation" element={<ParentComponent />} />
+        <Route path="/reservations/new" element={<ParentComponent />} />
         {/* </Route> */}
       </Routes>
     </Router>

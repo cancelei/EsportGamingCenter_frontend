@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Proptype from 'prop-types';
 import Navbar from '../Navbar';
 
 function Reservations() {
@@ -29,6 +28,7 @@ function Reservations() {
       console.error('Error fetching reservations:', error);
     }
   };
+
 
   const handleEdit = (reservation) => {
     setEditingId(reservation.id);
@@ -102,18 +102,35 @@ function Reservations() {
                   </div>
                 </div>
               )}
-              {!reservation.game && <p>No game data</p>}
-
-              {/* Detalles de la reserva */}
+              {!reservation.game && <p>No game data available</p>}
               <div className="reservation-details">
                 <strong>Date:</strong> {new Date(reservation.reservation_date).toLocaleDateString()}<br />
-                <strong>Config PC:</strong> {reservation.setup_config}<br />
+                <strong>PC Config:</strong> {reservation.setup_config}<br />
               </div>
-
-              {/* Botones de edición y eliminación */}
               <div className="reservation-actions">
-                <button type="button" onClick={() => handleEdit(reservation)}>Edit</button>
-                <button type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+                {editingId === reservation.id ? (
+                  <form onSubmit={(e) => handleUpdate(e, reservation.id)}>
+                    <input
+                      type="date"
+                      name="reservation_date"
+                      value={editFormData.reservation_date}
+                      onChange={handleFormChange}
+                    />
+                    <input
+                      type="text"
+                      name="setup_config"
+                      value={editFormData.setup_config}
+                      onChange={handleFormChange}
+                    />
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={handleCancelEdit}>Cancel</button>
+                  </form>
+                ) : (
+                  <>
+                    <button type="button" onClick={() => handleEdit(reservation)}>Edit</button>
+                    <button type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+                  </>
+                )}
               </div>
             </li>
           ))}
@@ -122,16 +139,5 @@ function Reservations() {
     </>
   );
 }
-
-Proptype.propTypes = {
-  reservation: Proptype.shape({
-    id: Proptype.number,
-    reservation_date: Proptype.string,
-    setup_config: Proptype.string,
-    game_id: Proptype.number,
-    user_id: Proptype.number,
-    status: Proptype.string,
-  }),
-};
 
 export default Reservations;
