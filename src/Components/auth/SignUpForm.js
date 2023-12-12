@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useIsAuthenticated } from 'react-auth-kit';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const navigate = useNavigate();
+  const isAuthenticated = useIsAuthenticated();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,6 +47,10 @@ function Register() {
       // Mostrar mensaje de error en la interfaz
     }
   };
+
+  if(isAuthenticated()) {
+    return <Navigate to="/games" />
+  }
 
   return (
     <div>

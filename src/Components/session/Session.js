@@ -1,5 +1,5 @@
 import { React, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
 import logo from '../../assets/logo.JPG';
 import '../../assets/css/carousel.css';
