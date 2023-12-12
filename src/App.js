@@ -14,6 +14,7 @@ import './App.css';
 import GamesListComponent from './Components/games/GamesListComponent';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ParentComponent from './Components/reservations/ReservationForm';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/details/:gameId" element={<GameDetails />} />
         <Route path="/games/delete" element={<DeleteGame />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/reservations/new" element={<ParentComponent />} />
         {/* </Route> */}
       </Routes>
     </Router>
