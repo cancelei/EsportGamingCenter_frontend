@@ -1,13 +1,32 @@
 .body-background {
-  background-image: url('/src/Sniper2.PNG');
+  width: 100%;
+  background-image: url('/src/bgimg.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
 }
 
+.main-page-container {
+  width: 100%;
+  background-image: url('/src/mainpage_bg_full2.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  font-size: large;
+}
+
 .formcontainer {
   max-width: 400px;
   margin: auto;
+  color: gold;
+}
+
+.formcontainer p{
+  color: white;
+}
+
+.formcontainer a{
+  color: darkorange;
 }
 
 h2 {
@@ -38,6 +57,7 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: large;
 }
 
 button:hover {
