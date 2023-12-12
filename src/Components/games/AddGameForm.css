@@ -1,17 +1,13 @@
-/*.body-background {
+.body-background {
   background-image: url('/src/Sniper2.PNG');
   background-size: cover;
   background-position: center;
   height: 100vh;
-}*/
+}
 
 .formcontainer {
-  /*max-width: 400px;*/
+  max-width: 400px;
   margin: auto;
-  background-image: url('/src/Sniper2.PNG');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
 }
 
 h2 {
