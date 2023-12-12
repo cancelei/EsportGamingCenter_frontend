@@ -22,6 +22,7 @@ function Register() {
         headers: {
           'Content-Type': 'application/json',
         },
+        // eslint-disable-next-line max-len
         body: JSON.stringify({ user: { email, password, password_confirmation: passwordConfirmation } }),
       });
 
@@ -41,47 +42,51 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="emailId">
-            Email:
-            <input
-              type="email"
-              value={email}
-              id="emailId"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="passwordId">
-            Password:
-            <input
-              type="password"
-              value={password}
-              id="passwordId"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="passwordConfirmationId">
-            Confirm Password:
-            <input
-              type="password"
-              value={passwordConfirmation}
-              id="passwordConfirmationId"
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">Register</button>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Login here</Link>
-      </p>
+    <div className="body-background">
+      <div className="formcontainer">
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="emailId">
+              Email:
+              <input
+                type="email"
+                value={email}
+                id="emailId"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="passwordId">
+              Password:
+              <input
+                type="password"
+                value={password}
+                id="passwordId"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="passwordConfirmationId">
+              Confirm Password:
+              <input
+                type="password"
+                value={passwordConfirmation}
+                id="passwordConfirmationId"
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+              />
+            </label>
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <p>
+          Already have an account?
+          {' '}
+          <Link to="/login">Login here</Link>
+        </p>
+      </div>
     </div>
   );
 }
