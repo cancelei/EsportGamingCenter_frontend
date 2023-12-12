@@ -141,9 +141,11 @@
 }
 
 .headerDetails {
-  color: #dec715;
-  text-align: center;
+  color: #b60214;
+  text-align: start;
   margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .Details {
@@ -160,8 +162,8 @@
 }
 
 .Details h3 {
-  color: #dec715;
-  margin-bottom: 10px;
+  color: #b60214;
+  /* margin-bottom: 10px; */
   width: 100%;
 }
 
@@ -169,24 +171,12 @@
   color: #141414;
   padding: 7px;
   margin: 5px 0;
-  background-color: rgb(163, 171, 227);
-  box-shadow: 0 5px 10px 0 rgb(135 222 21 / 44%);
 }
 
 .Details img {
-  width: 100%;
+  width: 75%;
   height: auto;
   margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgb(207 48 48 / 80%);
   border-radius: 8px;
-}
-
-.reserveButton {
-  width: 100%;
-  height: auto;
-  margin-top: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  border: 1px solid #e3e3e3;
-  background-color: rgb(163, 171, 227);
 }
