@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './AddGameForm.css';
 
 function AddGameForm() {
   const [title, setTitle] = useState('');
