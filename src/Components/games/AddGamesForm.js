@@ -36,7 +36,7 @@ function AddGameForm() {
   };
 
   return (
-    <div>
+    <div className="formcontainer">
       <h2>Add New Game</h2>
       <form onSubmit={handleSubmit}>
         <div>
