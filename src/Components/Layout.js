@@ -6,7 +6,7 @@ function Layout({ children }) {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main style={{ maxWidth: '100vw' }}>{children}</main>
     </>
   );
 }

@@ -1,5 +1,5 @@
 .body-background {
-  width: 100%;
+  width: 100vw;
   background-image: url('/src/bgimg.jpg');
   background-size: cover;
   background-position: center;
