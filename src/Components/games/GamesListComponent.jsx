@@ -34,11 +34,11 @@ function GamesListComponent() {
       padding: '20px',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center', // Center the image in the container
-      backgroundRepeat: 'no-repeat', // Prevent the image from repeating
-      minHeight: '100vh', // Minimum height of 100% of the viewport height
-      filter: 'brightness(0.9)', // Adjust the brightness filter as needed
-      minWidth: '100vw', // Minimum width of 100% of the viewport width
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+	  maxWidth: '100vw',
+      filter: 'brightness(0.9)',
     },
     list: {
       listStyleType: 'none',
