@@ -38,7 +38,7 @@ function GamesListComponent() {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       minHeight: '100vh',
-	  maxWidth: '100vw',
+	    maxWidth: '100vw',
       filter: 'brightness(0.9)',
     },
     list: {

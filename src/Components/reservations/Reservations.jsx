@@ -5,10 +5,6 @@ function Reservations() {
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ reservation_date: '', setup_config: '' });
 
-  useEffect(() => {
-    fetchReservations();
-  }, []);
-
   const fetchReservations = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/reservations', {
@@ -28,10 +24,15 @@ function Reservations() {
     }
   };
 
-  const handleEdit = (reservation) => {
+  useEffect(() => {
+    fetchReservations();
+  }, []);
+
+  function handleEdit(reservation) {
+    const { reservation_date, setup_config } = reservation;
     setEditingId(reservation.id);
-    setEditFormData({ reservation_date: reservation.reservation_date, setup_config: reservation.setup_config });
-  };
+    setEditFormData({ reservation_date, setup_config });
+  }
 
   const handleCancelEdit = () => {
     setEditingId(null);

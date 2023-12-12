@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchGameById } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 
 function GameDetails() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { gameId } = useParams();
   const gameDetails = useSelector((state) => state.games.gameById);
 

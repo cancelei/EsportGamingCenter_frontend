@@ -1,12 +1,9 @@
 import React from 'react';
-import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import './GameCarousel.css'; // Importa aquí el archivo CSS
+import Slider from 'react-slick';
+import './GameCarousel.css';
 
-function GameCarousel({ games }) {
-  const navigate = useNavigate(); // Inicializa navigate usando useNavigate
-
+function GameCarousel({ games, handleGameClick }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -35,16 +32,35 @@ function GameCarousel({ games }) {
     ],
   };
 
-  const handleGameClick = (gameId) => {
-    navigate(`/details/${gameId}`); // Redirige a la página de detalles
-  };
+  function handleKeyDown(event, gameId) {
+    if (event.key === 'Enter') {
+      handleGameClick(gameId);
+    }
+  }
 
   return (
     <div>
       <h2>Game Catalog</h2>
-      <Slider {...settings}>
+      <Slider
+        dots={settings.dots}
+        infinite={settings.infinite}
+        speed={settings.speed}
+        slidesToShow={settings.slidesToShow}
+        slidesToScroll={settings.slidesToScroll}
+        nextArrow={<SampleNextArrow />}
+        prevArrow={<SamplePrevArrow />}
+        responsive={settings.responsive}
+      >
         {games.map((game) => (
-          <div key={game.id} onClick={() => handleGameClick(game.id)} className="game-slide">
+          <div
+            key={game.id}
+            onClick={() => handleGameClick(game.id)}
+            onKeyDown={(event) => handleKeyDown(event, game.id)}
+            className="game-slide"
+            role="button"
+            tabIndex={0}
+            aria-label={game.title} // Added aria-label for text label
+          >
             <img src={game.image_url} alt={game.title} />
             <h3>{game.title}</h3>
             <p>{game.description}</p>
@@ -55,22 +71,54 @@ function GameCarousel({ games }) {
   );
 }
 
-function SampleNextArrow(props) {
-  const { className, onClick } = props;
-  return (
-    <div className={`${className} custom-arrow next`} onClick={onClick} />
-  );
-}
+GameCarousel.propTypes = {
+  games: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image_url: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  handleGameClick: PropTypes.func.isRequired,
+};
 
 function SamplePrevArrow(props) {
   const { className, onClick } = props;
   return (
-    <div className={`${className} custom-arrow prev`} onClick={onClick} />
+    <div
+      className={`${className} custom-arrow prev`}
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label="Previous" // Added aria-label for text label
+    />
   );
 }
 
-GameCarousel.propTypes = {
-  games: PropTypes.arrayOf(PropTypes.object).isRequired,
+SamplePrevArrow.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
+
+function SampleNextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={`${className} custom-arrow next`}
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label="Next" // Added aria-label for text label
+    />
+  );
+}
+
+SampleNextArrow.propTypes = {
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default GameCarousel;
