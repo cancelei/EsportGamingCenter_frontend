@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { useSignOut, useIsAuthenticated } from 'react-auth-kit';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import comAuth from '../hooks/comAuth';
 import logo from '../assets/logo.JPG';
 
 function Navbar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const location = useLocation();
-  const { setAuth } = comAuth();
   const navigate = useNavigate();
+  const isAuthenticated = useIsAuthenticated();
+  const signOut = useSignOut();
 
   const { authToken } = JSON.parse(localStorage.getItem('Token')) || {};
   const toggleSidebar = () => {
@@ -23,23 +24,20 @@ function Navbar() {
   };
 
   const handleLogout = async () => {
-    setAuth({});
-    localStorage.removeItem('Token');
-
     try {
-      if (authToken) {
-        await axios.delete('http://localhost:3000/auth/logout', {
-          headers: {
-            Authorization: authToken,
-            'Content-Type': 'application/json',
-          },
-        });
-        toast.success('Logout Successfully');
-      }
+      await axios.delete('http://localhost:3000/users/sign_out', {
+        headers: {
+          Authorization: authToken,
+          'Content-Type': 'application/json',
+        },
+      });
+      signOut();
+      toast.success('Logout Successfully');
+
+      navigate('/login');
     } catch (err) {
       toast.error('Oops! Failed to logout');
     }
-    navigate('/login');
   };
 
   return (
@@ -57,7 +55,7 @@ function Navbar() {
           <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
           <Link to="/reservations" className={`nav-link ${location.pathname === '/reservations' ? 'active' : ''}`} onClick={closeSidebar}>Reservations</Link>
           <button
-            disabled={!authToken}
+            disabled={!isAuthenticated()}
             onClick={handleLogout}
             type="button"
             className="list-group-item list-group-item-action"
@@ -74,3 +72,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
