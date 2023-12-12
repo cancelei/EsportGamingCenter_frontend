@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from '../Navbar';
 
 function Reservations() {
   const [reservations, setReservations] = useState([]);
@@ -82,66 +83,69 @@ function Reservations() {
   };
 
   return (
-    <div className="reservation-page-container">
-      <h2>My Reservations</h2>
-      <ul>
-        {reservations.map((reservation) => (
-          <li key={reservation.id} className="reservation-item">
-            {reservation.game && (
-              <div className="game-info">
-                <img src={reservation.game.image_url} alt={reservation.game.title} />
-                <div>
-                  <h3>{reservation.game.title}</h3>
-                  <p>{reservation.game.description}</p>
+    <>
+      <Navbar />
+      <div className="reservation-page-container">
+        <h2>My Reservations</h2>
+        <ul>
+          {reservations.map((reservation) => (
+            <li key={reservation.id} className="reservation-item">
+              {reservation.game && (
+                <div className="game-info">
+                  <img src={reservation.game.image_url} alt={reservation.game.title} />
+                  <div>
+                    <h3>{reservation.game.title}</h3>
+                    <p>{reservation.game.description}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-            {!reservation.game && <p>No game data available</p>}
-            <div className="reservation-details">
-              <strong>Date:</strong>
-              {' '}
-              {new Date(reservation.reservation_date).toLocaleDateString()}
-              <br />
-              <strong>PC Config:</strong>
-              {' '}
-              {reservation.setup_config}
-              <br />
-            </div>
-            <div className="reservation-actions">
-              {editingId === reservation.id ? (
-                <form onSubmit={(e) => handleUpdate(e, reservation.id)}>
-                  <input
-                    type="date"
-                    name="reservation_date"
-                    value={editFormData.reservation_date}
-                    onChange={handleFormChange}
-                  />
-                  <input
-                    type="text"
-                    name="setup_config"
-                    value={editFormData.setup_config}
-                    onChange={handleFormChange}
-                  />
-                  <button type="submit">Save</button>
-                  <button type="button" onClick={handleCancelEdit}>
-                    Cancel
-                  </button>
-                </form>
-              ) : (
-                <>
-                  <button type="button" onClick={() => handleEdit(reservation)}>
-                    Edit
-                  </button>
-                  <button type="button" onClick={() => handleDelete(reservation.id)}>
-                    Delete
-                  </button>
-                </>
               )}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+              {!reservation.game && <p>No game data available</p>}
+              <div className="reservation-details">
+                <strong>Date:</strong>
+                {' '}
+                {new Date(reservation.reservation_date).toLocaleDateString()}
+                <br />
+                <strong>PC Config:</strong>
+                {' '}
+                {reservation.setup_config}
+                <br />
+              </div>
+              <div className="reservation-actions">
+                {editingId === reservation.id ? (
+                  <form onSubmit={(e) => handleUpdate(e, reservation.id)}>
+                    <input
+                      type="date"
+                      name="reservation_date"
+                      value={editFormData.reservation_date}
+                      onChange={handleFormChange}
+                    />
+                    <input
+                      type="text"
+                      name="setup_config"
+                      value={editFormData.setup_config}
+                      onChange={handleFormChange}
+                    />
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={handleCancelEdit}>
+                      Cancel
+                    </button>
+                  </form>
+                ) : (
+                  <>
+                    <button type="button" onClick={() => handleEdit(reservation)}>
+                      Edit
+                    </button>
+                    <button type="button" onClick={() => handleDelete(reservation.id)}>
+                      Delete
+                    </button>
+                  </>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import background from '../../assets/background.webp';
+import Navbar from '../Navbar';
 
 function GamesListComponent() {
   const [games, setGames] = useState([]);
@@ -34,11 +35,10 @@ function GamesListComponent() {
       padding: '20px',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       minHeight: '100vh',
-	  maxWidth: '100vw',
+      maxWidth: '100vw',
       filter: 'brightness(0.9)',
     },
     list: {
@@ -85,20 +85,23 @@ function GamesListComponent() {
   };
 
   return (
-    <div style={styles.container}>
-      <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
-      <ul style={styles.list}>
-        {games.map((game) => (
-          <li key={game.id} style={styles.listItem}>
-            <h3 style={styles.gameHeader}>{game.title}</h3>
-            <p style={styles.gameDescription}>{game.description}</p>
-            <p>{game.genre}</p>
-            <img style={styles.gameImage} src={game.image_url} alt={game.title} />
-            <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Navbar />
+      <div style={styles.container}>
+        <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
+        <ul style={styles.list}>
+          {games.map((game) => (
+            <li key={game.id} style={styles.listItem}>
+              <h3 style={styles.gameHeader}>{game.title}</h3>
+              <p style={styles.gameDescription}>{game.description}</p>
+              <p>{game.genre}</p>
+              <img style={styles.gameImage} src={game.image_url} alt={game.title} />
+              <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }
 
