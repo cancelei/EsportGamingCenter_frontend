@@ -46,13 +46,13 @@ function GamesListComponent() {
     },
     listItem: {
       background: '#f0f0f0',
-      margin: '10px 0',
+      margin: '100px 350px',
       padding: '10px',
       borderRadius: '5px',
     },
     gameImage: {
-      maxWidth: '200px',
-      maxHeight: '200px',
+      maxWidth: '300px',
+      maxHeight: '300px',
       borderRadius: '5px',
     },
     gameHeader: {
