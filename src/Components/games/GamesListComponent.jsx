@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; 
 import background from '../../assets/background.webp';
 
 function GamesListComponent() {
@@ -35,11 +34,12 @@ function GamesListComponent() {
       padding: '20px',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center', // Center the image in the container
-      backgroundRepeat: 'no-repeat', // Prevent the image from repeating
-      minHeight: '100vh', // Minimum height of 100% of the viewport height
-      filter: 'brightness(0.9)', // Adjust the brightness filter as needed
-      minWidth: '100vw', // Minimum width of 100% of the viewport width
+
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      minHeight: '100vh',
+	  maxWidth: '100vw',
+      filter: 'brightness(0.9)',
     },
     list: {
       listStyleType: 'none',
@@ -47,13 +47,13 @@ function GamesListComponent() {
     },
     listItem: {
       background: '#f0f0f0',
-      margin: '10px 0',
+      margin: '100px 350px',
       padding: '10px',
       borderRadius: '5px',
     },
     gameImage: {
-      maxWidth: '200px',
-      maxHeight: '200px',
+      maxWidth: '300px',
+      maxHeight: '300px',
       borderRadius: '5px',
     },
     gameHeader: {
@@ -86,7 +86,7 @@ function GamesListComponent() {
 
   return (
     <div style={styles.container}>
-      <button type="submit" style={styles.newGameButton} onClick={() => { window.location.href = '/addgame'; }}>New Game</button>
+      <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
       <ul style={styles.list}>
         {games.map((game) => (
           <li key={game.id} style={styles.listItem}>
@@ -94,7 +94,7 @@ function GamesListComponent() {
             <p style={styles.gameDescription}>{game.description}</p>
             <p>{game.genre}</p>
             <img style={styles.gameImage} src={game.image_url} alt={game.title} />
-            <button type="submit" style={styles.deleteButton} onClick={() => { deleteGame(game.id); }}>Delete</button>
+            <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
           </li>
         ))}
       </ul>
