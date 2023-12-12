@@ -1,0 +1,38 @@
+import React, { useState, useEffect } from 'react';
+
+function FindGameComponent({ handleFormChange }) {
+  const [games, setGames] = useState([]);
+
+  const fetchGames = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/games');
+      const data = await response.json();
+      if (response.ok) {
+        setGames(data);
+      } else {
+        console.error('Error fetching games:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching games:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchGames();
+  }, []);
+
+  return (
+    <label htmlFor="game">Choose a game:
+      <select id="game" name="game_id" onChange={handleFormChange}>
+        <option value="">Select a Game</option>
+        {games.map((game) => (
+          <option key={game.id} value={game.id}>
+            {game.title}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+export default FindGameComponent;

@@ -54,6 +54,7 @@ function Navbar() {
           <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
           <Link to="/games/delete" className={`nav-link ${location.pathname === '/games/delete' ? 'active' : ''}`} onClick={closeSidebar}>Delete Game</Link>
           <Link to="/reservations" className={`nav-link ${location.pathname === '/reservations' ? 'active' : ''}`} onClick={closeSidebar}>Reservations</Link>
+          <Link to="/newreservation" className={`nav-link ${location.pathname === '/newreservation' ? 'active' : ''}`} onClick={closeSidebar}>New Reservations</Link>
           <button
             disabled={!isAuthenticated()}
             onClick={handleLogout}
@@ -72,3 +73,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

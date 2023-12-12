@@ -12,7 +12,7 @@ function Reservations() {
 
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/reservations', {
+      const response = await fetch('http://localhost:3000/api/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -29,6 +29,7 @@ function Reservations() {
     }
   };
 
+
   const handleEdit = (reservation) => {
     setEditingId(reservation.id);
     setEditFormData({ reservation_date: reservation.reservation_date, setup_config: reservation.setup_config });
@@ -41,7 +42,7 @@ function Reservations() {
   const handleUpdate = async (event, id) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/reservations/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/reservations/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ function Reservations() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/reservations/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/reservations/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -101,18 +102,35 @@ function Reservations() {
                   </div>
                 </div>
               )}
-              {!reservation.game && <p>No game data</p>}
-
-              {/* Detalles de la reserva */}
+              {!reservation.game && <p>No game data available</p>}
               <div className="reservation-details">
                 <strong>Date:</strong> {new Date(reservation.reservation_date).toLocaleDateString()}<br />
-                <strong>Config PC:</strong> {reservation.setup_config}<br />
+                <strong>PC Config:</strong> {reservation.setup_config}<br />
               </div>
-
-              {/* Botones de edición y eliminación */}
               <div className="reservation-actions">
-                <button type="button" onClick={() => handleEdit(reservation)}>Edit</button>
-                <button type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+                {editingId === reservation.id ? (
+                  <form onSubmit={(e) => handleUpdate(e, reservation.id)}>
+                    <input
+                      type="date"
+                      name="reservation_date"
+                      value={editFormData.reservation_date}
+                      onChange={handleFormChange}
+                    />
+                    <input
+                      type="text"
+                      name="setup_config"
+                      value={editFormData.setup_config}
+                      onChange={handleFormChange}
+                    />
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={handleCancelEdit}>Cancel</button>
+                  </form>
+                ) : (
+                  <>
+                    <button type="button" onClick={() => handleEdit(reservation)}>Edit</button>
+                    <button type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+                  </>
+                )}
               </div>
             </li>
           ))}

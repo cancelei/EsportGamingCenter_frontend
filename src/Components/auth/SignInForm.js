@@ -11,7 +11,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const response = await fetch('http://localhost:3000/users/sign_in', {
         method: 'POST',
@@ -26,7 +26,6 @@ function Login() {
         }),
       });
       const data = await response.json();
-      console.log('Login success:');
       signIn({
         token: data.token,
         tokenType: "Token",
@@ -45,37 +44,39 @@ function Login() {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="emailId">
-            Email:
-            <input
-              type="email"
-              value={email}
-              id="emailId"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="passwordId">
-            Password:
-            <input
-              type="password"
-              value={password}
-              id="passwordId"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Do not have an account? 
-        <Link to="/register">Sign up here</Link>
-      </p>
+    <div className="body-background">
+      <div className="formcontainer">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="emailId">
+              Email:
+              <input
+                type="email"
+                value={email}
+                id="emailId"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="passwordId">
+              Password:
+              <input
+                type="password"
+                value={password}
+                id="passwordId"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <p>
+          Do not have an account?
+          <Link to="/register">Sign up here</Link>
+        </p>
+      </div>
     </div>
   );
 }
