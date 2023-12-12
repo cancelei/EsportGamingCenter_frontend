@@ -28,19 +28,19 @@ function Login() {
       const data = await response.json();
       signIn({
         token: data.token,
-        tokenType: "Token",
+        tokenType: 'Token',
         expiresIn: 1440,
-        authState: data.user_email
+        authState: data.user_email,
       });
-  
+
       navigate('/games');
     } catch (error) {
       console.error('Login Error:', error);
     }
   };
 
-  if(isAuthenticated()) {
-    return <Navigate to="/games" />
+  if (isAuthenticated()) {
+    return <Navigate to="/games" />;
   }
 
   return (

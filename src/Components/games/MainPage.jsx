@@ -14,12 +14,10 @@ function MainPage() {
 
   return (
 
-    <>
-      <div className="main-page-container">
-        <h1 className="main-title">Esport Gaming Center</h1>
-        <GameCarousel games={games} />
-      </div>
-    </>
+    <div className="main-page-container">
+      <h1 className="main-title">Esport Gaming Center</h1>
+      <GameCarousel games={games} />
+    </div>
   );
 }
 

@@ -48,8 +48,8 @@ function Register() {
     }
   };
 
-  if(isAuthenticated()) {
-    return <Navigate to="/games" />
+  if (isAuthenticated()) {
+    return <Navigate to="/games" />;
   }
 
   return (
