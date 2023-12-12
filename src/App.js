@@ -26,7 +26,7 @@ function App() {
         cookieSecure={false}
       >
       <Router>
-         <Layout>
+        <Layout>
           <Routes>          
             <Route path="/" element={<Session />} />
             <Route path="/login" element={<Login />} />
@@ -67,8 +67,8 @@ function App() {
               </RequireAuth>
             }/>
           </Routes>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </AuthProvider>      
   );
 }
