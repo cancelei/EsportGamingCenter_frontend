@@ -22,17 +22,17 @@ function GameCarousel({ games }) {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const handleGameClick = (gameId) => {
@@ -43,7 +43,7 @@ function GameCarousel({ games }) {
     <div>
       <h2>Game Catalog</h2>
       <Slider {...settings}>
-        {games.map(game => (
+        {games.map((game) => (
           <div key={game.id} onClick={() => handleGameClick(game.id)} className="game-slide">
             <img src={game.image_url} alt={game.title} />
             <h3>{game.title}</h3>
@@ -70,7 +70,7 @@ function SamplePrevArrow(props) {
 }
 
 GameCarousel.propTypes = {
-  games: PropTypes.arrayOf(PropTypes.object).isRequired
+  games: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default GameCarousel;

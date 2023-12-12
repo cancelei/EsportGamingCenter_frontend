@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Navbar from '../Navbar';
 import GameCarousel from './GameCarousel';
 import { fetchGames } from '../../redux/fts/gamesSlice'; // Importar la acción fetchGames de Redux
 import '../../assets/css/carousel.css';
@@ -14,13 +13,10 @@ function MainPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <Navbar />
-      <div className="main-page-container">
-        <h1>Main Page</h1>
-        <GameCarousel games={games} />
-      </div>
-    </>
+    <div className="main-page-container">
+      <h1>Main Page</h1>
+      <GameCarousel games={games} />
+    </div>
   );
 }
 

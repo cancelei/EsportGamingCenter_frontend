@@ -15,24 +15,27 @@ import GamesListComponent from './Components/games/GamesListComponent';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ParentComponent from './Components/reservations/ReservationForm';
+import Layout from './Components/Layout';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Session />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* <Route element={<RequireAuth />}> */}
-        <Route exact path="/addGame" element={<AddGamesForm />} />
-        <Route path="/games" element={<MainPage />} />
-        <Route path="/gamelist" element={<GamesListComponent />} />
-        <Route path="/details/:gameId" element={<GameDetails />} />
-        <Route path="/games/delete" element={<DeleteGame />} />
-        <Route path="/reservations" element={<Reservations />} />
-        <Route path="/reservations/new" element={<ParentComponent />} />
-        {/* </Route> */}
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Session />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          {/* <Route element={<RequireAuth />}> */}
+          <Route exact path="/addGame" element={<AddGamesForm />} />
+          <Route path="/games" element={<MainPage />} />
+          <Route path="/gamelist" element={<GamesListComponent />} />
+          <Route path="/details/:gameId" element={<GameDetails />} />
+          <Route path="/games/delete" element={<DeleteGame />} />
+          <Route path="/reservations" element={<Reservations />} />
+          <Route path="/reservations/new" element={<ParentComponent />} />
+          {/* </Route> */}
+        </Routes>
+      </Layout>
     </Router>
   );
 }
