@@ -85,7 +85,7 @@ function GamesListComponent() {
 
   return (
     <div style={styles.container}>
-      <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
+      <button type="submit" style={styles.newGameButton} onClick={() => { window.location.href = '/addgame'; }}>New Game</button>
       <ul style={styles.list}>
         {games.map((game) => (
           <li key={game.id} style={styles.listItem}>
@@ -93,7 +93,7 @@ function GamesListComponent() {
             <p style={styles.gameDescription}>{game.description}</p>
             <p>{game.genre}</p>
             <img style={styles.gameImage} src={game.image_url} alt={game.title} />
-            <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
+            <button type="submit" style={styles.deleteButton} onClick={() => { deleteGame(game.id); }}>Delete</button>
           </li>
         ))}
       </ul>

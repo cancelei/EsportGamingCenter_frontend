@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function FindGameComponent({ handleFormChange }) {
   const [games, setGames] = useState([]);
@@ -22,7 +23,8 @@ function FindGameComponent({ handleFormChange }) {
   }, []);
 
   return (
-    <label htmlFor="game">Choose a game:
+    <label htmlFor="game">
+      Choose a game:
       <select id="game" name="game_id" onChange={handleFormChange}>
         <option value="">Select a Game</option>
         {games.map((game) => (
@@ -34,5 +36,9 @@ function FindGameComponent({ handleFormChange }) {
     </label>
   );
 }
+
+FindGameComponent.propTypes = {
+  handleFormChange: PropTypes.func.isRequired,
+};
 
 export default FindGameComponent;
