@@ -14,7 +14,7 @@ function ReservationForm() {
 
   useEffect(() => {
     if (!userId) {
-      alert('Please log in to make a reservation.');
+      console.log('Please log in to make a reservation.');
       navigate('/login');
     }
   }, [userId, navigate]);
@@ -43,13 +43,10 @@ function ReservationForm() {
       });
 
       if (response.ok) {
-        alert('Reservation successfully made!');
         navigate('/reservations');
-      } else {
-        console.error('Error making reservation');
       }
     } catch (error) {
-      console.error('Error making reservation:', error);
+      console.error('Error creating reservation:', error);
     }
   };
 
@@ -59,33 +56,39 @@ function ReservationForm() {
         <h2>Make New Reservation</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="date">Reservation Date:</label>
-            <input
-              type="date"
-              value={reservationDate}
-              onChange={(e) => setReservationDate(e.target.value)}
-            />
+            <label htmlFor="date">
+              Reservation Date:
+              <input
+                type="date"
+                value={reservationDate}
+                onChange={(e) => setReservationDate(e.target.value)}
+              />
+            </label>
           </div>
           <div>
-            <label htmlFor="setup_config">PC Setup:</label>
-            <input
-              type="text"
-              value={setupConfig}
-              onChange={(e) => setSetupConfig(e.target.value)}
-            />
+            <label htmlFor="setup_config">
+              PC Setup:
+              <input
+                type="text"
+                value={setupConfig}
+                onChange={(e) => setSetupConfig(e.target.value)}
+              />
+            </label>
           </div>
           <div>
-            <label htmlFor="platform">Platform:</label>
-            <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
-              <option value="">Select Platform</option>
-              <option value="PC">PC</option>
-              <option value="Xbox Series S/X">Xbox Series S/X</option>
-              <option value="PS4">PS4</option>
-              <option value="PS5">PS5</option>
-              <option value="Nintendo Switch">Nintendo Switch</option>
-              <option value="iOS">iOS</option>
-              <option value="Android">Android</option>
-            </select>
+            <label htmlFor="platform">
+              Platform:
+              <select value={platform} onChange={(e) => setPlatform(e.target.value)}>
+                <option value="">Select Platform</option>
+                <option value="PC">PC</option>
+                <option value="Xbox Series S/X">Xbox Series S/X</option>
+                <option value="PS4">PS4</option>
+                <option value="PS5">PS5</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="iOS">iOS</option>
+                <option value="Android">Android</option>
+              </select>
+            </label>
           </div>
           <button type="submit">Reserve</button>
         </form>

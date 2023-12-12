@@ -34,6 +34,7 @@ function GamesListComponent() {
       padding: '20px',
       backgroundImage: `url(${background})`,
       backgroundSize: 'cover',
+
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       minHeight: '100vh',
