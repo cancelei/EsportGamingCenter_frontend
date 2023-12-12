@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function Reservations() {
   const [reservations, setReservations] = useState([]);
   const [editingId, setEditingId] = useState(null);
-  const [editFormData, setEditFormData] = useState({ reservation_date: '', setup_config: '' });
+  const [editFormData, setEditFormData] = useState({ reservationDate: '', setupConfig: '' });
 
   const fetchReservations = async () => {
     try {
@@ -29,9 +29,9 @@ function Reservations() {
   }, []);
 
   function handleEdit(reservation) {
-    const { reservation_date, setup_config } = reservation;
+    const { reservationDate, setupConfig } = reservation;
     setEditingId(reservation.id);
-    setEditFormData({ reservation_date, setup_config });
+    setEditFormData({ reservationDate, setupConfig });
   }
 
   const handleCancelEdit = () => {
@@ -50,7 +50,7 @@ function Reservations() {
       });
       const updatedReservation = await response.json();
       if (response.ok) {
-        setReservations(reservations.map((reservation) => (reservation.id === id ? updatedReservation : reservation)));
+        setReservations(reservations.map((reservation) => (reservation.id === id ? updatedReservation : reservation))); // eslint-disable-line max-len
         setEditingId(null);
       } else {
         console.error('Error updating reservation:', updatedReservation);
@@ -101,11 +101,11 @@ function Reservations() {
             <div className="reservation-details">
               <strong>Date:</strong>
               {' '}
-              {new Date(reservation.reservation_date).toLocaleDateString()}
+              {new Date(reservation.reservationDate).toLocaleDateString()}
               <br />
               <strong>PC Config:</strong>
               {' '}
-              {reservation.setup_config}
+              {reservation.setupConfig}
               <br />
             </div>
             <div className="reservation-actions">
@@ -113,14 +113,14 @@ function Reservations() {
                 <form onSubmit={(e) => handleUpdate(e, reservation.id)}>
                   <input
                     type="date"
-                    name="reservation_date"
-                    value={editFormData.reservation_date}
+                    name="reservationDate"
+                    value={editFormData.reservationDate}
                     onChange={handleFormChange}
                   />
                   <input
                     type="text"
-                    name="setup_config"
-                    value={editFormData.setup_config}
+                    name="setupConfig"
+                    value={editFormData.setupConfig}
                     onChange={handleFormChange}
                   />
                   <button type="submit">Save</button>
