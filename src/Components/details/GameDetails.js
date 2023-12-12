@@ -16,11 +16,6 @@ function GameDetails() {
   }, [dispatch, gameId]);
 
   const handleReserve = async () => {
-    const userId = localStorage.getItem("userId");
-    if (!userId) {
-      alert("Por favor, inicie sesión para realizar una reserva.");
-      return;
-    }
 
     const reservationDate = new Date().toISOString().split('T')[0];
     const setupConfig = "Configuración estándar";

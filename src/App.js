@@ -2,6 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
+import { AuthProvider, RequireAuth } from 'react-auth-kit';
 import Login from './Components/auth/SignInForm'; // Asegúrate de que este path sea correcto
 import Register from './Components/auth/SignUpForm'; // Asegúrate de que este path sea correcto
 import AddGamesForm from './Components/games/AddGamesForm';
@@ -17,21 +18,30 @@ import 'slick-carousel/slick/slick-theme.css';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Session />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* <Route element={<RequireAuth />}> */}
-        <Route exact path="/addGame" element={<AddGamesForm />} />
-        <Route path="/games" element={<MainPage />} />
-        <Route path="/gamelist" element={<GamesListComponent />} />
-        <Route path="/details/:gameId" element={<GameDetails />} />
-        <Route path="/games/delete" element={<DeleteGame />} />
-        <Route path="/reservations" element={<Reservations />} />
-        {/* </Route> */}
-      </Routes>
-    </Router>
+    <AuthProvider authType = {'cookie'}
+        authName={'_auth'}
+        cookieDomain={window.location.hostname}
+        cookieSecure={false}
+      >
+      <Router>
+        <Routes>          
+          <Route path="/" element={<Session />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path={'/games'} element={
+            <RequireAuth loginPath={'/login'}>
+              <MainPage />
+            </RequireAuth>
+          }/>
+          {/* <Route exact path="/addGame" element={<AddGamesForm />} /> */}
+          {/* <Route path="/games" element={<MainPage />} /> */}
+          {/* <Route path="/gamelist" element={<GamesListComponent />} />
+          <Route path="/details/:gameId" element={<GameDetails />} />
+          <Route path="/games/delete" element={<DeleteGame />} />
+          <Route path="/reservations" element={<Reservations />} /> */}
+        </Routes>
+      </Router>
+    </AuthProvider>      
   );
 }
 

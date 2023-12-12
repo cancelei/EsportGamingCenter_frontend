@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
+import { useSignIn, useIsAuthenticated } from 'react-auth-kit';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const signIn = useSignIn();
+  const isAuthenticated = useIsAuthenticated();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,19 +26,23 @@ function Login() {
         }),
       });
       const data = await response.json();
-      if (response.ok) {
-        console.log('Login success:', data);
-        // Guarda el userId en localStorage
-        localStorage.setItem("userId", data.id);
+      console.log('Login success:');
+      signIn({
+        token: data.token,
+        tokenType: "Token",
+        expiresIn: 1440,
+        authState: data.user_email
+      });
   
-        navigate('/games');
-      } else {
-        console.error('Login Error:', data);
-      }
+      navigate('/games');
     } catch (error) {
       console.error('Login Error:', error);
     }
   };
+
+  if(isAuthenticated()) {
+    return <Navigate to="/games" />
+  }
 
   return (
     <div>
