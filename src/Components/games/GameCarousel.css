@@ -46,9 +46,21 @@ body {
   border-radius: 10px;
 }
 
+.slick-slider {
+  background-color: dodgerblue;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.slick-dots {
+  background-color: dodgerblue;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
 /* Navbar styles */
 .sidebar-logo-container {
-  width: 150px;
+  width: 200px;
   height: 150px;
 }
 
@@ -67,6 +79,15 @@ body {
   padding-top: 40px;
   gap: 50px;
   box-shadow: 2px 2px 8px gray;
+  background-image: url('/src/space_Bg.webp');
+}
+
+.side-bar a{
+  color: white;
+}
+
+.side-bar p{
+  color: white;
 }
 
 #root {
@@ -91,6 +112,7 @@ body {
 
 .main-title {
   margin-left: 3%;
+  color: gold;
 }
 
 .sidebar-links-container {
@@ -138,6 +160,20 @@ body {
 .list-group-item {
   margin-top: 5%;
   width: 100%;
+}
+
+.reserveButton {
+  background: #87de15;
+  padding: 12px;
+  width: 30%;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 767px) {
@@ -188,6 +224,12 @@ body {
     position: fixed;
   }
 
+  .main-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 2.5%;
+}
+
   /* Details Page mb */
   .details-page {
     display: flex;
@@ -211,5 +253,27 @@ body {
   .game-name,
   .game-model {
     text-align: center;
+  }
+
+  .reserveButton {
+    background: #87de15;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .Details img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgb(207 48 48 / 80%);
+    border-radius: 8px;
   }
 }
