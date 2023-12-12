@@ -36,12 +36,13 @@ function AddGameForm() {
 
   return (
     <div>
-      <h2>Add Game</h2>
+      <h2>Add New Game</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
           <input
             type="text"
+            id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -49,6 +50,7 @@ function AddGameForm() {
         <div>
           <label htmlFor="description">Description:</label>
           <textarea
+            id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -57,6 +59,7 @@ function AddGameForm() {
           <label htmlFor="imageUrl">Image URL:</label>
           <input
             type="text"
+            id="imageUrl"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
           />
