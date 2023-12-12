@@ -3,33 +3,33 @@ import axios from 'axios';
 import background from '../../assets/background.webp';
 
 function GamesListComponent() {
-    const [games, setGames] = useState([]);
+  const [games, setGames] = useState([]);
 
-    const fetchGames = async () => {
-        try {
-            const response = await axios.get('http://localhost:3000/api/games'); // Replace '/api/games' with your backend API endpoint
-            setGames(response.data);
-            console.log(response.data)
-        } catch (error) {
-            console.error(error);
-        }
-    };
+  const fetchGames = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/games'); // Replace '/api/games' with your backend API endpoint
+      setGames(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    useEffect(() => {
-        fetchGames();
-    }, []);
+  useEffect(() => {
+    fetchGames();
+  }, []);
 
-    const deleteGame = async (gameId) => {
-        try {
-            await axios.delete(`http://localhost:3000/api/games/${gameId}`); // Replace '/api/games' with your backend API endpoint
-            fetchGames();
-        } catch (error) {
-            console.error(error);
-        }
-    };
+  const deleteGame = async (gameId) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/games/${gameId}`); // Replace '/api/games' with your backend API endpoint
+      fetchGames();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    const styles = {
-        container: {
+  const styles = {
+    container: {
       textAlign: 'center',
       padding: '20px',
       backgroundImage: `url(${background})`,
@@ -81,24 +81,24 @@ function GamesListComponent() {
       cursor: 'pointer',
       marginBottom: '20px',
     },
-    };
+  };
 
-    return (
-        <div style={styles.container}>
-            <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
-            <ul style={styles.list}>
-                {games.map((game) => (
-                    <li key={game.id} style={styles.listItem}>
-                        <h3 style={styles.gameHeader}>{game.title}</h3>
-                        <p style={styles.gameDescription}>{game.description}</p>
-                        <p>{game.genre}</p>
-                        <img style={styles.gameImage} src={game.image_url} alt={game.title} />
-                        <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div style={styles.container}>
+      <button type="submit" style={styles.newGameButton} onClick={() => window.location.href = '/addgame'}>New Game</button>
+      <ul style={styles.list}>
+        {games.map((game) => (
+          <li key={game.id} style={styles.listItem}>
+            <h3 style={styles.gameHeader}>{game.title}</h3>
+            <p style={styles.gameDescription}>{game.description}</p>
+            <p>{game.genre}</p>
+            <img style={styles.gameImage} src={game.image_url} alt={game.title} />
+            <button type="submit" style={styles.deleteButton} onClick={() => deleteGame(game.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default GamesListComponent;

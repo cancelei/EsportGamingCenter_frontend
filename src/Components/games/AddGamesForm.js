@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AddGameForm.css';
 
 function AddGameForm() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -26,7 +28,8 @@ function AddGameForm() {
 
       if (response.ok) {
         console.log('Game added successfully');
-        // Handle any additional logic or redirection after adding the game
+        // Use history.push to navigate to the gameList page
+        navigate('/gamelist');
       } else {
         console.error('Error adding game');
       }
