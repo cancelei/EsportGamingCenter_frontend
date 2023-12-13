@@ -1,59 +1,73 @@
 .games-list-container {
-    text-align: center;
-    padding: 20px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    filter: brightness(0.9);
-    min-width: 100vw;
+  text-align: center;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  filter: brightness(0.9);
+  min-width: 100vw;
+  overflow: auto;
+  height: 100%;
 }
 
 .games-list {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .game-list-item {
-    background: #f0f0f0;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  background: #f0f0f0;
+  margin: 15px 450px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(187 255 178 / 66%);
 }
 
 .game-image {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 5px;
+  margin: auto;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 5px;
 }
 
 .game-header {
-    color: #333;
-    margin: 5px 0;
+  color: black;
+  margin: 5px 0;
 }
 
 .game-description {
-    color: #666;
-    font-size: 14px;
+  color: black;
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .delete-button {
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
+  width: 35%;
+  margin: auto;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .new-game-button {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+.game-list-item {
+    margin: 15px 0px;
+  }
 }
