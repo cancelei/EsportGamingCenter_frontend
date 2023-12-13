@@ -15,14 +15,19 @@ function Reservations() {
   }
 
   const fetchReservations = async () => {
-    const token = localStorage.getItem('userToken'); // Recuperar el token de autenticación
-  
+    const token = localStorage.getItem('userToken'); // Obtiene el token del almacenamiento local
+    console.log('Token:', token);
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:3000/api/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, // Añadir token en la cabecera
+          'Authorization': `Bearer ${token}`, // Asegúrate de enviar el token correctamente
         },
       });
       const data = await response.json();

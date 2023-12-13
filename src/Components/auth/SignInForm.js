@@ -27,24 +27,25 @@ function Login() {
       });
       const data = await response.json();
 
-      if (response.ok) {
-        signIn({
-          token: data.token,
-          tokenType: 'Token',
-          expiresIn: 1440,
-          authState: {
-            userEmail: data.user_email,
-            userId: data.userId, // Asegúrate de recibir este campo desde el backend
-          },
-        });
+     // En tu método handleSubmit
+if (response.ok) {
+  signIn({
+    token: data.token,
+    tokenType: 'Token',
+    expiresIn: 1440,
+    authState: {
+      userEmail: data.user_email,
+      userId: data.userId,
+    },
+  });
 
-        // Almacena userId en localStorage
-        localStorage.setItem('userId', data.userId);
+  localStorage.setItem('userToken', data.token);
+  localStorage.setItem('userId', data.userId);
+  navigate('/games');
+} else {
+  console.error('Login Error:', data);
+}
 
-        navigate('/games');
-      } else {
-        console.error('Login Error:', data);
-      }
     } catch (error) {
       console.error('Login Error:', error);
     }
