@@ -1,70 +1,254 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <br/>
+  <img src="" width="300"  height="auto" />
+  <br/>
+  <br/>
+  <h1><b>Esport Gaming Center</b></h1><a name="about-project"></a>
+</div>
 
-## Available Scripts
+<div>
+ <img src="">
+</div>
 
-In the project directory, you can run:
+# 📗 Table of Contents
 
-### `npm start`
+- [📗 Table of Contents](#-table-of-contents)
+- [📖🚗 Esport Gaming Center App ](#-luxury-speedsters-app-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [🎫 Kanban Board ](#-kanban-board-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [❓ FAQ ](#-faq-)
+  - [📝 License ](#-license-)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 📖🚗 Esport Gaming Center App <a name="about-project"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+TBA...
 
-### `npm test`
+## 🛠 Built With <a name="built-with"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tech Stack <a name="tech-stack"></a>
 
-### `npm run build`
+> List of technologies used for this project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<details>
+  <summary>BackEnd</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org">Ruby on Rails</a></li>
+    <li><a href="https://stimulus.hotwired.dev/">Stimulus</a></li>
+    <li><a href="https://rspec.info/">Rspec</a></li>
+  </ul>
+</details>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details>
+  <summary>Front-end/View</summary>
+  <ul>
+    <li><a href="https://react.dev/">React</a></li>
+    <li><a href="https://axios-http.com/es/docs/intro">Axios</a></li>
+    <li><a href="https://tailwindcss.com/docs/guides/ruby-on-rails">Tailwind CSS</a></li>
+  </ul>
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<details>
+  <summary>Front-end/Store management</summary>
+  <ul>
+    <li><a href="https://react-redux.js.org/">React-redux</a></li>
+  </ul>
+</details>
 
-### `npm run eject`
+<details>
+  <summary>Database</summary>
+  <ul>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+  </ul>
+</details>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Key Features <a name="key-features"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Create and Remove Games**
+- **Create Reservations**
+- **Full stack webpage**
+- **Can see all the list of reservation of current user**
+- **Details of every game in db**
+- **Log in and Sign up feature**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚀 Live Demo <a name="live-demo"></a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Under Construction](TBA) 💻📲
 
-### Code Splitting
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎫 Kanban Board <a name="kanban-board"></a>
 
-### Analyzing the Bundle Size
+- [Link to Kanban Board.](https://github.com/users/cancelei/projects/7)
+- [Initial state of the Kanban Board.](https://github.com/cancelei/EsportGamingCenter_backend/assets/45726631/17119158-dc80-416e-a44a-8fc5b4b205c3)
+- *We are 5 members in our Team.*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 💻 Getting Started <a name="getting-started"></a>
 
-### Advanced Configuration
+To get a local copy up and running, follow these steps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Prerequisites
 
-### Deployment
+In order to run this project you need:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+you need to install ruby 3.2.2 using the prefer tool, example: 
+- [rvm](https://rvm.io/)
+- [rbenv](https://github.com/rbenv/rbenv)
+- [asdf-vm](https://asdf-vm.com/)
 
-### `npm run build` fails to minify
+- Browser (Google Chrome, Mozilla Firefox, Safari or any other browser)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Setup
+
+Clone this repository to your desired folder:
+
+
+```sh
+  cd my-folder
+  git clone https://github.com/cancelei/EsportGamingCenter_backend.git
+```
+
+### Install
+
+Install this project with:
+
+
+```sh
+  cd EsportGamingCenter_backend
+  bundle install
+  npm install
+```
+
+### Usage
+
+To run the project, execute the following command:
+
+```sh
+./bin/dev
+```
+**Note:** If there are any errors consider adding your necesary username and password in `database.yml` for setting up your local enviroment and use the following comand:
+
+```sh
+rails db:drop db:create db:migrate
+./bin/dev
+```
+
+### Run tests
+
+To run tests, run the following command:
+
+```sh
+rspec ./spec/models
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 👥 Authors <a name="authors"></a>
+
+👨🏼‍🚀 **Juan Diego Guerra (JD)** 👽
+- GitHub: [@JuanDiegoGuerra](https://github.com/JuanDiegoGuerra)
+- Twitter: [@jdxelric147](https://twitter.com/jdxelric147)
+- LinkedIn: [Juan Guerra](https://www.linkedin.com/in/juan-guerra-65076b1ba/)
+  
+👤 **Gardimy Charles** 🐱‍👤
+- GitHub: [@Gardimy](https://github.com/Gardimy)
+- Twitter: [@gardyelontiga45](https://twitter.com/gardyelontiga45)
+- LinkedIn: [Gardimy charles](https://www.linkedin.com/in/gardimycharles/)
+
+👤 **Luis Emilio Rojas Rojas**
+
+- [GitHub](https://github.com/lerfast)
+- [Twitter](https://twitter.com/lerfast)
+- [LinkedIn](https://www.linkedin.com/in/luis-emilio-rojas-rojas-6ba90a8a/)
+
+👨🏼‍🚀 **Abel Lavieri** 🧙🏼‍♂️
+
+- [GitHub](https://github.com/alvp01)
+- [Twitter](https://twitter.com/alvp01)
+- [LinkedIn](https://www.linkedin.com/in/abel-lavieri)
+
+👨🏼‍🚀 **Team Member 5** 🦸🏼‍♂️
+
+- GitHub: [@](link)
+- Twitter: [@](link)
+- LinkedIn: [@](link)
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **Improve UI**
+- [ ] **Add more functionalities**
+- [ ] **Add more details on reservation list**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/cancelei/EsportGamingCenter_backend/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project,please give it a ⭐️!
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to thank Microverse for giving us the opportunity to learn and grow as developers and also We like to thank our family, they are all our support. 🌟
+
+> Original design idea by [Murat Korkmaz on Behance.](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## ❓ FAQ <a name="faq"></a>
+
+- **Do I need to install any program before running this project?**
+
+  - [ ] **Yes, you need to install Ruby** 
+  
+  <br>
+
+- **Can I use this project for my own purposes?**
+
+  - [ ] **Yes, you can.**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
