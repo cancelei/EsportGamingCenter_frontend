@@ -11,7 +11,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
       const response = await fetch('http://localhost:3000/users/sign_in', {
         method: 'POST',
@@ -26,7 +26,7 @@ function Login() {
         }),
       });
       const data = await response.json();
-  
+
       if (response.ok) {
         signIn({
           token: data.token,
@@ -37,10 +37,10 @@ function Login() {
             userId: data.userId, // Asegúrate de recibir este campo desde el backend
           },
         });
-  
+
         // Almacena userId en localStorage
         localStorage.setItem('userId', data.userId);
-  
+
         navigate('/games');
       } else {
         console.error('Login Error:', data);
@@ -84,7 +84,7 @@ function Login() {
           <button type="submit">Login</button>
         </form>
         <p>
-          Don't have an account?
+          Do not have an account?
           <Link to="/register">Sign up here</Link>
         </p>
       </div>
