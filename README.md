@@ -2,14 +2,7 @@
 
 <div align="center">
   <br/>
-  <img src="" width="300"  height="auto" />
-  <br/>
-  <br/>
   <h1><b>Esport Gaming Center</b></h1><a name="about-project"></a>
-</div>
-
-<div>
- <img src="">
 </div>
 
 # 📗 Table of Contents
@@ -36,8 +29,7 @@
   - [📝 License ](#-license-)
 
 # 📖🚗 Esport Gaming Center App <a name="about-project"></a>
-
-TBA...
+This project involves developing an eSports reservation system with two distinct parts: the Backend, developed using Ruby on Rails, and the Frontend, built with React. This system aims to cater to eSports players, allowing them to reserve games, manage reservations, and access a catalog of available games.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -127,7 +119,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/cancelei/EsportGamingCenter_backend.git
+  git clone https://github.com/cancelei/EsportGamingCenter_frontend
 ```
 
 ### Install
