@@ -26,14 +26,25 @@ function Login() {
         }),
       });
       const data = await response.json();
-      signIn({
-        token: data.token,
-        tokenType: 'Token',
-        expiresIn: 1440,
-        authState: data.user_email,
-      });
 
-      navigate('/games');
+      if (response.ok) {
+        signIn({
+          token: data.token,
+          tokenType: 'Token',
+          expiresIn: 1440,
+          authState: {
+            userEmail: data.user_email,
+            userId: data.userId, // Asegúrate de recibir este campo desde el backend
+          },
+        });
+
+        // Almacena userId en localStorage
+        localStorage.setItem('userId', data.userId);
+
+        navigate('/games');
+      } else {
+        console.error('Login Error:', data);
+      }
     } catch (error) {
       console.error('Login Error:', error);
     }

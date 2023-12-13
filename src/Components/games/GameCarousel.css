@@ -6,9 +6,15 @@
 body {
   margin: 0;
   font-family:
-    'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
 }
 
 * {
@@ -47,15 +53,31 @@ body {
 }
 
 .slick-slider {
-  background-color: dodgerblue;
+  background-color: rgb(49 73 223 / 46%);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
 
 .slick-dots {
-  background-color: dodgerblue;
+  background-color: rgb(49 73 223 / 46%);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+}
+
+.slick-slide h3 {
+  background-color: rgb(255 255 255 / 66%);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}
+
+.slick-slide p {
+  background-color: rgb(255 255 255 / 66%);
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+li {
+  flex-direction: column;
 }
 
 /* Navbar styles */
@@ -82,17 +104,18 @@ body {
   background-image: url('/src/space_Bg.webp');
 }
 
-.side-bar a{
+.side-bar a {
   color: white;
 }
 
-.side-bar p{
+.side-bar p {
   color: white;
 }
 
 #root {
   display: flex;
-  /*justify-content: space-between; TO BE REVIEWED*/ 
+
+  /* justify-content: space-between; TO BE REVIEWED */
   width: 100%;
   height: 100vh;
   background-color: antiquewhite;
@@ -104,7 +127,6 @@ body {
 }
 
 .delete-game-container,
-.main-page-container,
 .reservation-page-container,
 .login-page-container,
 .details-all-page {
@@ -177,10 +199,34 @@ body {
   cursor: pointer;
 }
 
+.reservation-page-container {
+  margin-left: 2.5%;
+  overflow: auto;
+  height: 100%;
+  width: 97%;
+}
+
+.reservation-page-container img {
+  width: 35%;
+}
+
+.reservation-page-container li {
+  margin-bottom: 2%;
+}
+
+.reservation-actions button {
+  margin-right: 1%;
+  margin-top: 0.5%;
+}
+
 @media only screen and (max-width: 767px) {
   #root {
     display: flex;
     flex-direction: column;
+  }
+
+  main {
+    width: 100%;
   }
 
   .side-bar {
@@ -197,11 +243,20 @@ body {
 
   .Add-game-container,
   .delete-game-container,
-  .main-page-container,
   .details-all-page,
-  .reservation-page-container,
   .login-page-container {
     width: 100%;
+  }
+
+  .reservation-page-container li {
+    margin-left: 5%;
+    margin-top: 10%;
+    list-style: none;
+  }
+
+  .main-page-container {
+    width: 100%;
+    padding-top: 30%;
   }
 
   .mob-nav {
@@ -228,8 +283,7 @@ body {
   .main-title {
     font-size: 1.5rem;
     text-align: center;
-    margin-top: 2.5%;
-}
+  }
 
   /* Details Page mb */
   .details-page {

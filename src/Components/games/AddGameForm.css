@@ -4,6 +4,8 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
+  font-size: large;
+  font-weight: bold;
 }
 
 .main-page-container {
@@ -15,22 +17,23 @@
   font-size: large;
 }
 
+.main-page-container h2 {
+  color: darkorange;
+  text-align: center;
+}
+
 .formcontainer {
   max-width: 400px;
   margin: auto;
   color: gold;
 }
 
-.formcontainer p{
+.formcontainer p {
   color: white;
 }
 
-.formcontainer a{
+.formcontainer a {
   color: darkorange;
-}
-
-h2 {
-  text-align: center;
 }
 
 form {
