@@ -1,0 +1,59 @@
+.games-list-container {
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    filter: brightness(0.9);
+    min-width: 100vw;
+}
+
+.games-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.game-list-item {
+    background: #f0f0f0;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.game-image {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 5px;
+}
+
+.game-header {
+    color: #333;
+    margin: 5px 0;
+}
+
+.game-description {
+    color: #666;
+    font-size: 14px;
+}
+
+.delete-button {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.new-game-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
