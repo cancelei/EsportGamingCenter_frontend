@@ -1,3 +1,11 @@
+main {
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100%;
+  width: 90%;
+  margin-top: 0;
+}
+
 /* ------------------ Carousel Styles ------------------ */
 
 .carousel {
@@ -69,6 +77,9 @@
   font-family: 'Nunito', sans-serif;
   align-items: center;
   justify-content: center;
+  background-image: url('/src/main_page_bg.webp');
+  background-size: cover;
+  background-position: center;
 }
 
 .session-content {
@@ -82,6 +93,12 @@
 #sesion-title {
   width: 100%;
   text-align: center;
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: -4%;
 }
 
 .session-logo-container {
@@ -91,6 +108,8 @@
 
 .session-logo {
   width: 100%;
+  border-radius: 10%;
+  border: 15px gold solid;
 }
 
 .session-btns {
@@ -99,6 +118,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-size: large;
+  font-weight: bold;
 }
 
 .session_btn {
@@ -163,6 +184,7 @@
 
 .Details h3 {
   color: #b60214;
+
   /* margin-bottom: 10px; */
   width: 100%;
 }
