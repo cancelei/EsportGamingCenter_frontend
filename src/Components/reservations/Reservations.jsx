@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
-
+/* eslint-disable */
 function Reservations() {
   const [reservations, setReservations] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ reservation_date: '', setup_config: '' });
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchReservations();
@@ -86,7 +88,8 @@ function Reservations() {
     <>
       <Navbar />
       <div className="reservation-page-container">
-        <h2>My Reservations</h2>
+        <h2 className="reservations-title">My Reservations</h2>
+        <button type="button" className="new-game-button" onClick={() => navigate('/games')}>New Reservation</button>
         <ul>
           {reservations.map((reservation) => (
             <li key={reservation.id} className="reservation-item">
