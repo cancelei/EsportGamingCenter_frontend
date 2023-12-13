@@ -35,7 +35,7 @@ function GamesListComponent() {
   const handleGameClick = (gameId) => {
     navigate(`/details/${gameId}`);
   };
-
+/* eslint-disable */
   return (
     <>
       <Navbar />

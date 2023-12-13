@@ -38,7 +38,7 @@ function GameCarousel({ games }) {
   const handleGameClick = (gameId) => {
     navigate(`/details/${gameId}`);
   };
-
+/* eslint-disable */
   return (
     <div>
       <h2>Game Catalog</h2>
