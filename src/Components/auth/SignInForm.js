@@ -11,7 +11,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:3000/users/sign_in', {
         method: 'POST',
@@ -26,14 +26,25 @@ function Login() {
         }),
       });
       const data = await response.json();
-      signIn({
-        token: data.token,
-        tokenType: 'Token',
-        expiresIn: 1440,
-        authState: data.user_email,
-      });
-
-      navigate('/games');
+  
+      if (response.ok) {
+        signIn({
+          token: data.token,
+          tokenType: 'Token',
+          expiresIn: 1440,
+          authState: {
+            userEmail: data.user_email,
+            userId: data.userId, // Asegúrate de recibir este campo desde el backend
+          },
+        });
+  
+        // Almacena userId en localStorage
+        localStorage.setItem('userId', data.userId);
+  
+        navigate('/games');
+      } else {
+        console.error('Login Error:', data);
+      }
     } catch (error) {
       console.error('Login Error:', error);
     }
@@ -73,7 +84,7 @@ function Login() {
           <button type="submit">Login</button>
         </form>
         <p>
-          Do not have an account?
+          Don't have an account?
           <Link to="/register">Sign up here</Link>
         </p>
       </div>

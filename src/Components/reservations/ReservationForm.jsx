@@ -4,13 +4,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 function ReservationForm() {
   const [reservationDate, setReservationDate] = useState('');
   const [setupConfig, setSetupConfig] = useState('');
-  const [platform, setPlatform] = useState(''); // New state for platform
+  const [platform, setPlatform] = useState(''); // Estado para la plataforma
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Get gameId from URL
+  // Obtener gameId de la URL
   const gameId = new URLSearchParams(location.search).get('gameId');
-  const userId = localStorage.getItem('userId'); // Assume user is logged in
+  const userId = localStorage.getItem('userId'); // Recuperar el userId desde el localStorage
 
   useEffect(() => {
     if (!userId) {
@@ -21,15 +21,15 @@ function ReservationForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const reservationData = {
       reservation: {
         game_id: gameId,
-        user_id: userId,
+        user_id: userId, // Asegúrate de que este valor no es 'undefined'
         reservation_date: reservationDate,
         setup_config: setupConfig,
-        platform, // Include platform in reservation data
-        status: 'Pending', // Default status for new reservations
+        platform,
+        status: 'Pending',
       },
     };
 
@@ -44,6 +44,9 @@ function ReservationForm() {
 
       if (response.ok) {
         navigate('/reservations');
+      } else {
+        const errorData = await response.json();
+        console.error('Error creating reservation:', errorData);
       }
     } catch (error) {
       console.error('Error creating reservation:', error);
