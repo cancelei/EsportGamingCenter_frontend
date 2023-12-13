@@ -57,7 +57,7 @@ function Login() {
   return (
     <div className="body-background">
       <div className="formcontainer">
-        <h2>Login</h2>
+        <h2 className="login-title">Login</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="emailId">

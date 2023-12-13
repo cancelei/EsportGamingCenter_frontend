@@ -53,9 +53,9 @@ function Register() {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="registration-container">
+      <h2 className="registration-title">Register</h2>
+      <form onSubmit={handleSubmit} className="registration-form">
         <div>
           <label htmlFor="emailId">
             Email:

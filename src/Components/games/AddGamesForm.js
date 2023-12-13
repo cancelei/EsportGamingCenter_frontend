@@ -44,7 +44,7 @@ function AddGameForm() {
       <Navbar />
       <div className="body-background">
         <div className="formcontainer">
-          <h2>Add New Game</h2>
+          <h2 className="addgame-title">Add New Game</h2>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="title">
