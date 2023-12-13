@@ -10,15 +10,23 @@ function Reservations() {
     fetchReservations();
   }, []);
 
+  if (!Array.isArray(reservations)) {
+    return <div>No reservations available.</div>;
+  }
+
   const fetchReservations = async () => {
+    const token = localStorage.getItem('userToken'); // Recuperar el token de autenticación
+  
     try {
       const response = await fetch('http://localhost:3000/api/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Añadir token en la cabecera
         },
       });
       const data = await response.json();
+      console.log(data); // Agrega esta línea
       if (response.ok) {
         setReservations(data);
       } else {
@@ -28,6 +36,7 @@ function Reservations() {
       console.error('Error fetching reservations:', error);
     }
   };
+  
 
   const handleEdit = (reservation) => {
     setEditingId(reservation.id);

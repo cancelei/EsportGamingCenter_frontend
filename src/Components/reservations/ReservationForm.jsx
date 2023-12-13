@@ -33,14 +33,17 @@ function ReservationForm() {
       },
     };
 
-    try {
-      const response = await fetch('http://localhost:3000/api/reservations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reservationData),
-      });
+    const token = localStorage.getItem('userToken'); // Asegúrate de obtener el token correcto
+
+  try {
+    const response = await fetch('http://localhost:3000/api/reservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // Añadir token en la cabecera
+      },
+      body: JSON.stringify(reservationData),
+    });
 
       if (response.ok) {
         navigate('/reservations');
