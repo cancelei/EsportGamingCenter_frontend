@@ -3,8 +3,8 @@ import {
   BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
 import { AuthProvider, RequireAuth } from 'react-auth-kit';
-import Login from './Components/auth/SignInForm'; // Asegúrate de que este path sea correcto
-import Register from './Components/auth/SignUpForm'; // Asegúrate de que este path sea correcto
+import Login from './Components/auth/SignInForm';
+import Register from './Components/auth/SignUpForm';
 import AddGamesForm from './Components/games/AddGamesForm';
 import Session from './Components/session/Session';
 import MainPage from './Components/games/MainPage';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './GamesListComponent.css'; // Importar el archivo CSS
+import './GamesListComponent.css';
 import background from '../../assets/background.webp';
 import Navbar from '../Navbar';
 
@@ -23,7 +23,7 @@ function GamesListComponent() {
   }, []);
 
   const deleteGame = async (gameId, event) => {
-    event.stopPropagation(); // Previene la propagación del evento al elemento padre
+    event.stopPropagation();
     try {
       await axios.delete(`http://localhost:3000/api/games/${gameId}`);
       fetchGames();

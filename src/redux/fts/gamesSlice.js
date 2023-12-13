@@ -9,9 +9,8 @@ const initialState = {
   error: null,
 };
 
-// Asumiendo que tienes una ruta en Rails configurada como '/api/games'
 export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
-  const url = 'http://127.0.0.1:3000/api/games'; // URL actualizada para el espacio de nombres 'api'
+  const url = 'http://127.0.0.1:3000/api/games';
   try {
     const response = await axios.get(url);
     return response.data;
@@ -20,7 +19,6 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
   }
 });
 
-// Asumiendo que tienes una ruta en Rails configurada como '/api/games/:id'
 export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId) => {
   const url = `http://127.0.0.1:3000/api/games/${gameId}`;
   try {

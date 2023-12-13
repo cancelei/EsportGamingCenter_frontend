@@ -5,13 +5,12 @@ import Navbar from '../Navbar';
 function ReservationForm() {
   const [reservationDate, setReservationDate] = useState('');
   const [setupConfig, setSetupConfig] = useState('');
-  const [platform, setPlatform] = useState(''); // Estado para la plataforma
+  const [platform, setPlatform] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Obtener gameId de la URL
   const gameId = new URLSearchParams(location.search).get('gameId');
-  const userId = localStorage.getItem('userId'); // Recuperar el userId desde el localStorage
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     if (!userId) {
@@ -26,7 +25,7 @@ function ReservationForm() {
     const reservationData = {
       reservation: {
         game_id: gameId,
-        user_id: userId, // Asegúrate de que este valor no es 'undefined'
+        user_id: userId,
         reservation_date: reservationDate,
         setup_config: setupConfig,
         platform,

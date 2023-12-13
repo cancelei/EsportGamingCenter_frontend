@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import GameCarousel from './GameCarousel';
-import { fetchGames } from '../../redux/fts/gamesSlice'; // Importar la acción fetchGames de Redux
+import { fetchGames } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 import Navbar from '../Navbar';
 
@@ -10,7 +10,7 @@ function MainPage() {
   const { games } = useSelector((state) => state.games);
 
   useEffect(() => {
-    dispatch(fetchGames()); // Cargar juegos desde el backend
+    dispatch(fetchGames());
   }, [dispatch]);
 
   return (

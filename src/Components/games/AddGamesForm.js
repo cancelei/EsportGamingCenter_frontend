@@ -29,7 +29,6 @@ function AddGameForm() {
 
       if (response.ok) {
         console.log('Game added successfully');
-        // Navigate to the game list page after adding a game
         navigate('/gamelist');
       } else {
         console.error('Error adding game');

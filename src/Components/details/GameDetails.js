@@ -6,7 +6,6 @@ import '../../assets/css/carousel.css';
 
 function GameDetails() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
   const { gameId } = useParams();
   const gameDetails = useSelector((state) => state.games.gameById);
 

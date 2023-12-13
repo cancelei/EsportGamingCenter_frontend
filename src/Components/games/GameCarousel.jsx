@@ -1,11 +1,11 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import './GameCarousel.css'; // Importa aquí el archivo CSS
+import { useNavigate } from 'react-router-dom';
+import './GameCarousel.css';
 
 function GameCarousel({ games }) {
-  const navigate = useNavigate(); // Inicializa navigate usando useNavigate
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -36,7 +36,7 @@ function GameCarousel({ games }) {
   };
 
   const handleGameClick = (gameId) => {
-    navigate(`/details/${gameId}`); // Redirige a la página de detalles
+    navigate(`/details/${gameId}`);
   };
 
   return (
