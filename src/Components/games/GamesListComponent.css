@@ -67,7 +67,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-.game-list-item {
-    margin: 15px 0px;
+  .game-list-item {
+    margin: 15px 0;
   }
 }

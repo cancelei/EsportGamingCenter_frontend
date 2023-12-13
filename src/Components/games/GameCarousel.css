@@ -64,13 +64,13 @@ body {
   border-bottom-right-radius: 30px;
 }
 
-.slick-slide h3{
+.slick-slide h3 {
   background-color: rgb(255 255 255 / 66%);
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
 }
 
-.slick-slide p{
+.slick-slide p {
   background-color: rgb(255 255 255 / 66%);
   border-bottom-right-radius: 50px;
   border-bottom-left-radius: 50px;
@@ -253,7 +253,7 @@ li {
     margin-top: 10%;
     list-style: none;
   }
-  
+
   .main-page-container {
     width: 100%;
     padding-top: 30%;
