@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { useSignOut, useIsAuthenticated } from 'react-auth-kit';
+import { useSignOut, useIsAuthenticated, useAuthUser } from 'react-auth-kit';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -13,8 +13,8 @@ function Navbar() {
   const navigate = useNavigate();
   const isAuthenticated = useIsAuthenticated();
   const signOut = useSignOut();
+  const auth = useAuthUser();
 
-  const { authToken } = JSON.parse(localStorage.getItem('Token')) || {};
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
   };
@@ -27,7 +27,6 @@ function Navbar() {
     try {
       await axios.delete('http://localhost:3000/users/sign_out', {
         headers: {
-          Authorization: authToken,
           'Content-Type': 'application/json',
         },
       });
@@ -51,8 +50,16 @@ function Navbar() {
         </div>
         <div className="sidebar-links-container">
           <Link to="/games" className={`nav-link ${location.pathname === '/games' ? 'active' : ''}`} onClick={closeSidebar}>Home Page</Link>
-          <Link to="/gameList" className={`nav-link ${location.pathname === '/gameList' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
-          <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
+          {
+            auth().isAdmin ?
+            <Link to="/gameList" className={`nav-link ${location.pathname === '/gameList' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
+            : null
+          }
+          {
+            auth().isAdmin ?
+            <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
+            : null
+          }
           <Link to="/reservations" className={`nav-link ${location.pathname === '/reservations' ? 'active' : ''}`} onClick={closeSidebar}>Reservations</Link>
           <button
             disabled={!isAuthenticated()}

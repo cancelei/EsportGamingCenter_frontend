@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 import './AddGameForm.css';
 import Navbar from '../Navbar';
 
@@ -8,6 +9,8 @@ function AddGameForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const auth = useAuthUser();
+  const header = useAuthHeader();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +20,8 @@ function AddGameForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-USER-EMAIL': auth().userEmail,
+          'X-USER-TOKEN': header().split(' ')[1],
         },
         body: JSON.stringify({
           game: {

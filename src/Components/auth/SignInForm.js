@@ -34,12 +34,10 @@ function Login() {
           expiresIn: 1440,
           authState: {
             userEmail: data.user_email,
-            userId: data.userId, // Asegúrate de recibir este campo desde el backend
+            userId: data.user_id,
+            isAdmin: data.is_admin,
           },
         });
-
-        // Almacena userId en localStorage
-        localStorage.setItem('userId', data.userId);
 
         navigate('/games');
       } else {

@@ -9,8 +9,9 @@ function MainPage() {
   const dispatch = useDispatch();
   const { games } = useSelector((state) => state.games);
 
+
   useEffect(() => {
-    dispatch(fetchGames()); // Cargar juegos desde el backend
+    dispatch(fetchGames());
   }, [dispatch]);
 
   return (
