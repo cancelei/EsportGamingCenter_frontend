@@ -17,7 +17,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ParentComponent from './Components/reservations/ReservationForm';
 
-function App() {
+const App = () => {
   return (
     <AuthProvider
       authType="cookie"
@@ -90,6 +90,6 @@ function App() {
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;
