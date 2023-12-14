@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 import axios from 'axios';
 
 const initialState = {
@@ -10,17 +9,14 @@ const initialState = {
   error: null,
 };
 
-const auth = useAuthUser().email;
-const header = useAuthHeader().split(' ')[1];
-
 // Asumiendo que tienes una ruta en Rails configurada como '/api/games'
-export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
+export const fetchGames = createAsyncThunk('games/fetchGames', async (email, auth) => {
   const url = 'http://127.0.0.1:3000/api/games'; // URL actualizada para el espacio de nombres 'api'
   try {
     const response = await axios.get(url, {
       headers: {
-        'X-USER-EMAIL': auth,
-        'X-USER-TOKEN': header,
+        'X-USER-EMAIL': email,
+        'X-USER-TOKEN': auth,
       }
     });
     return response.data;
@@ -30,13 +26,13 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
 });
 
 // Asumiendo que tienes una ruta en Rails configurada como '/api/games/:id'
-export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId) => {
+export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId, email, auth) => {
   const url = `http://127.0.0.1:3000/api/games/${gameId}`;
   try {
     const response = await axios.get(url, {
       headers: {
-        'X-USER-EMAIL': auth,
-        'X-USER-TOKEN': header,
+        'X-USER-EMAIL': email,
+        'X-USER-TOKEN': auth,
       }
     });
     return response.data;

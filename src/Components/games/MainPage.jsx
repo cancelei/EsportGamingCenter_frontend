@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 import GameCarousel from './GameCarousel';
 import { fetchGames } from '../../redux/fts/gamesSlice'; // Importar la acción fetchGames de Redux
 import '../../assets/css/carousel.css';
@@ -8,10 +9,12 @@ import Navbar from '../Navbar';
 function MainPage() {
   const dispatch = useDispatch();
   const { games } = useSelector((state) => state.games);
+  const auth = useAuthUser();
+  const header = useAuthHeader();
 
 
   useEffect(() => {
-    dispatch(fetchGames());
+    dispatch(fetchGames(auth().userEmail, header().split(' ')[1]));
   }, [dispatch]);
 
   return (
