@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useSignIn, useIsAuthenticated } from 'react-auth-kit';
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -89,6 +89,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

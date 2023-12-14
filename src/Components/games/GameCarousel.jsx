@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './GameCarousel.css';
 
-function GameCarousel({ games }) {
+const GameCarousel = ({ games }) => {
   const navigate = useNavigate();
 
   const settings = {
@@ -53,21 +53,21 @@ function GameCarousel({ games }) {
       </Slider>
     </div>
   );
-}
+};
 
-function SampleNextArrow(props) {
+const SampleNextArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow next`} onClick={onClick} />
   );
-}
+};
 
-function SamplePrevArrow(props) {
+const SamplePrevArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow prev`} onClick={onClick} />
   );
-}
+};
 
 GameCarousel.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function DeleteGame({ gameId, onDeleteGame }) {
+const DeleteGame = ({ gameId, onDeleteGame }) => {
   const handleDelete = async () => {
     try {
       const response = await fetch(`http://localhost:3000/games/${gameId}`, {
@@ -22,7 +22,7 @@ function DeleteGame({ gameId, onDeleteGame }) {
   return (
     <button type="button" onClick={handleDelete}>Delete</button>
   );
-}
+};
 
 DeleteGame.propTypes = {
   gameId: PropTypes.number.isRequired,
