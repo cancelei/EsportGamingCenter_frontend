@@ -34,7 +34,6 @@ function AddGameForm() {
 
       if (response.ok) {
         console.log('Game added successfully');
-        // Navigate to the game list page after adding a game
         navigate('/gamelist');
       } else {
         console.error('Error adding game');
@@ -49,7 +48,7 @@ function AddGameForm() {
       <Navbar />
       <div className="body-background">
         <div className="formcontainer">
-          <h2>Add New Game</h2>
+          <h2 className="addgame-title">Add New Game</h2>
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="title">

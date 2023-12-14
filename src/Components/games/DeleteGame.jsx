@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 
-function DeleteGame({ gameId, onDeleteGame }) {
+const DeleteGame = ({ gameId, onDeleteGame }) => {
   const auth = useAuthUser();
   const header = useAuthHeader();
-
   const handleDelete = async () => {
     try {
       const response = await fetch(`http://localhost:3000/games/${gameId}`, {
@@ -31,7 +30,7 @@ function DeleteGame({ gameId, onDeleteGame }) {
   return (
     <button type="button" onClick={handleDelete}>Delete</button>
   );
-}
+};
 
 DeleteGame.propTypes = {
   gameId: PropTypes.number.isRequired,

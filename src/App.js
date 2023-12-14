@@ -3,22 +3,21 @@ import {
   BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
 import { AuthProvider, RequireAuth } from 'react-auth-kit';
-import Login from './Components/auth/SignInForm'; // Asegúrate de que este path sea correcto
-import Register from './Components/auth/SignUpForm'; // Asegúrate de que este path sea correcto
+import Login from './Components/auth/SignInForm';
+import Register from './Components/auth/SignUpForm';
 import AddGamesForm from './Components/games/AddGamesForm';
 import Session from './Components/session/Session';
 import MainPage from './Components/games/MainPage';
 import DeleteGame from './Components/games/DeleteGame';
 import Reservations from './Components/reservations/Reservations';
 import GameDetails from './Components/details/GameDetails';
-import './App.css';
+import './App.css';/* eslint-disable */
 import GamesListComponent from './Components/games/GamesListComponent';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ParentComponent from './Components/reservations/ReservationForm';
 
-function App() {
-  return (
+const App = () => (
     <AuthProvider
       authType="cookie"
       authName="_auth"
@@ -90,6 +89,5 @@ function App() {
       </Router>
     </AuthProvider>
   );
-}
 
 export default App;

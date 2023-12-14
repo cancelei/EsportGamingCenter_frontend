@@ -1,11 +1,11 @@
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
-import './GameCarousel.css'; // Importa aquí el archivo CSS
+import { useNavigate } from 'react-router-dom';
+import './GameCarousel.css';
 
-function GameCarousel({ games }) {
-  const navigate = useNavigate(); // Inicializa navigate usando useNavigate
+const GameCarousel = ({ games }) => {
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -36,9 +36,9 @@ function GameCarousel({ games }) {
   };
 
   const handleGameClick = (gameId) => {
-    navigate(`/details/${gameId}`); // Redirige a la página de detalles
+    navigate(`/details/${gameId}`);
   };
-
+/* eslint-disable */
   return (
     <div>
       <h2>Game Catalog</h2>
@@ -53,21 +53,21 @@ function GameCarousel({ games }) {
       </Slider>
     </div>
   );
-}
+};
 
-function SampleNextArrow(props) {
+const SampleNextArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow next`} onClick={onClick} />
   );
-}
+};
 
-function SamplePrevArrow(props) {
+const SamplePrevArrow = (props) => {
   const { className, onClick } = props;
   return (
     <div className={`${className} custom-arrow prev`} onClick={onClick} />
   );
-}
+};
 
 GameCarousel.propTypes = {
   games: PropTypes.arrayOf(PropTypes.object).isRequired,

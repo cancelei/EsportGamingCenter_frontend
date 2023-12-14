@@ -14,7 +14,6 @@ function Register() {
 
     if (password !== passwordConfirmation) {
       console.error('Passwords do not match');
-      // Mostrar mensaje de error en la interfaz
       return;
     }
 
@@ -36,15 +35,13 @@ function Register() {
       if (response.ok) {
         const data = await response.json();
         console.log('Successful registration:', data);
-        navigate('/login'); // Navegar a la página de inicio de sesión
+        navigate('/login');
       } else {
         const errorData = await response.json();
         console.error('Registration error:', errorData);
-        // Mostrar mensaje de error en la interfaz
       }
     } catch (error) {
       console.error('Registration error:', error);
-      // Mostrar mensaje de error en la interfaz
     }
   };
 
@@ -53,9 +50,9 @@ function Register() {
   }
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="registration-container">
+      <h2 className="registration-title">Register</h2>
+      <form onSubmit={handleSubmit} className="registration-form">
         <div>
           <label htmlFor="emailId">
             Email:

@@ -2,14 +2,7 @@
 
 <div align="center">
   <br/>
-  <img src="" width="300"  height="auto" />
-  <br/>
-  <br/>
   <h1><b>Esport Gaming Center</b></h1><a name="about-project"></a>
-</div>
-
-<div>
- <img src="">
 </div>
 
 # 📗 Table of Contents
@@ -36,9 +29,8 @@
   - [📝 License ](#-license-)
 
 # 📖🚗 Esport Gaming Center App <a name="about-project"></a>
-
-TBA...
-
+This project involves developing an eSports reservation system with two distinct parts: the Backend, developed using Ruby on Rails, and the Frontend, built with React. This system aims to cater to eSports players, allowing them to reserve games, manage reservations, and access a catalog of available games.
+Click on the link[https://github.com/cancelei/EsportGamingCenter_backend] to navigate to the backend of our APP.
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -127,7 +119,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/cancelei/EsportGamingCenter_backend.git
+  git clone https://github.com/cancelei/EsportGamingCenter_frontend
 ```
 
 ### Install
@@ -136,32 +128,11 @@ Install this project with:
 
 
 ```sh
-  cd EsportGamingCenter_backend
-  bundle install
+  cd EsportGamingCenter_frontend
   npm install
+  npm start
 ```
 
-### Usage
-
-To run the project, execute the following command:
-
-```sh
-./bin/dev
-```
-**Note:** If there are any errors consider adding your necesary username and password in `database.yml` for setting up your local enviroment and use the following comand:
-
-```sh
-rails db:drop db:create db:migrate
-./bin/dev
-```
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
-rspec ./spec/models
-```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -189,11 +160,10 @@ rspec ./spec/models
 - [Twitter](https://twitter.com/alvp01)
 - [LinkedIn](https://www.linkedin.com/in/abel-lavieri)
 
-👨🏼‍🚀 **Team Member 5** 🦸🏼‍♂️
+👨🏼‍🚀 **Glauber Bannwart** 🦸🏼‍♂️
 
-- GitHub: [@](link)
-- Twitter: [@](link)
-- LinkedIn: [@](link)
+- GitHub: [@cancelei](https://github.com/cancelei)
+- LinkedIn: [Glauber Bannwart](https://www.linkedin.com/in/gbannwart/)
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
