@@ -11,14 +11,13 @@ import MainPage from './Components/games/MainPage';
 import DeleteGame from './Components/games/DeleteGame';
 import Reservations from './Components/reservations/Reservations';
 import GameDetails from './Components/details/GameDetails';
-import './App.css';
+import './App.css';/* eslint-disable */
 import GamesListComponent from './Components/games/GamesListComponent';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ParentComponent from './Components/reservations/ReservationForm';
 
-const App = () => {
-  return (
+const App = () => (
     <AuthProvider
       authType="cookie"
       authName="_auth"
@@ -90,6 +89,5 @@ const App = () => {
       </Router>
     </AuthProvider>
   );
-};
 
 export default App;

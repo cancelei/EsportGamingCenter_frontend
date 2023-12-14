@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DeleteGame from '../games/DeleteGame';
 
-const GamePage = () => {
+function GamePage() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -55,6 +55,6 @@ const GamePage = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default GamePage;

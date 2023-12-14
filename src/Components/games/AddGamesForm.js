@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './AddGameForm.css';
 import Navbar from '../Navbar';
 
-const AddGameForm = () => {
+function AddGameForm() {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -83,6 +83,6 @@ const AddGameForm = () => {
       </div>
     </>
   );
-};
+}
 
 export default AddGameForm;
