@@ -4,7 +4,7 @@ import { useIsAuthenticated } from 'react-auth-kit';
 import logo from '../../assets/logo.JPG';
 import '../../assets/css/carousel.css';
 
-function Session() {
+const Session = () => {
   const navigate = useNavigate();
   const isAuthenticated = useIsAuthenticated();
   useEffect(() => {
@@ -32,6 +32,6 @@ function Session() {
       </div>
     </div>
   );
-}
+};
 
 export default Session;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function FindGameComponent({ handleFormChange }) {
+const FindGameComponent = ({ handleFormChange }) => {
   const [games, setGames] = useState([]);
 
   const fetchGames = async () => {
@@ -35,7 +35,7 @@ function FindGameComponent({ handleFormChange }) {
       </select>
     </label>
   );
-}
+};
 
 FindGameComponent.propTypes = {
   handleFormChange: PropTypes.func.isRequired,

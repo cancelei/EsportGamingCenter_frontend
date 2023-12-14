@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
 /* eslint-disable */
-function Reservations() {
+const Reservations = () => {
   const [reservations, setReservations] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ reservation_date: '', setup_config: '' });

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../Navbar';
 
-function ReservationForm() {
+const ReservationForm = () => {
   const [reservationDate, setReservationDate] = useState('');
   const [setupConfig, setSetupConfig] = useState('');
   const [platform, setPlatform] = useState('');
@@ -101,6 +101,6 @@ function ReservationForm() {
       </div>
     </>
   );
-}
+};
 
 export default ReservationForm;
