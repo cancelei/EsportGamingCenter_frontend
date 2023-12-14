@@ -51,14 +51,14 @@ const Navbar = () => {
         <div className="sidebar-links-container">
           <Link to="/games" className={`nav-link ${location.pathname === '/games' ? 'active' : ''}`} onClick={closeSidebar}>Home Page</Link>
           {
-            auth().isAdmin ?
-            <Link to="/gameList" className={`nav-link ${location.pathname === '/gameList' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
-            : null
+            auth().isAdmin
+              ? <Link to="/gameList" className={`nav-link ${location.pathname === '/gameList' ? 'active' : ''}`} onClick={closeSidebar}>Games</Link>
+              : null
           }
           {
-            auth().isAdmin ?
-            <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
-            : null
+            auth().isAdmin
+              ? <Link to="/addGame" className={`nav-link ${location.pathname === '/addGame' ? 'active' : ''}`} onClick={closeSidebar}>Add Game</Link>
+              : null
           }
           <Link to="/reservations" className={`nav-link ${location.pathname === '/reservations' ? 'active' : ''}`} onClick={closeSidebar}>Reservations</Link>
           <button

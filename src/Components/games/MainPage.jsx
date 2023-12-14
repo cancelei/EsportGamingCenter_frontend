@@ -12,7 +12,6 @@ const MainPage = () => {
   const auth = useAuthUser();
   const header = useAuthHeader();
 
-
   useEffect(() => {
     dispatch(fetchGames(auth().userEmail, header().split(' ')[1]));
   }, [dispatch]);

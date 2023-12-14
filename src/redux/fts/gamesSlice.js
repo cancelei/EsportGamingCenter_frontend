@@ -17,7 +17,7 @@ export const fetchGames = createAsyncThunk('games/fetchGames', async (email, aut
       headers: {
         'X-USER-EMAIL': email,
         'X-USER-TOKEN': auth,
-      }
+      },
     });
     return response.data;
   } catch (error) {
@@ -33,7 +33,7 @@ export const fetchGameById = createAsyncThunk('games/fetchGameById', async (game
       headers: {
         'X-USER-EMAIL': email,
         'X-USER-TOKEN': auth,
-      }
+      },
     });
     return response.data;
   } catch (error) {
