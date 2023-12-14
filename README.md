@@ -128,32 +128,11 @@ Install this project with:
 
 
 ```sh
-  cd EsportGamingCenter_backend
-  bundle install
+  cd EsportGamingCenter_frontend
   npm install
+  npm start
 ```
 
-### Usage
-
-To run the project, execute the following command:
-
-```sh
-./bin/dev
-```
-**Note:** If there are any errors consider adding your necesary username and password in `database.yml` for setting up your local enviroment and use the following comand:
-
-```sh
-rails db:drop db:create db:migrate
-./bin/dev
-```
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
-rspec ./spec/models
-```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
