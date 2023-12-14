@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { useIsAuthenticated } from 'react-auth-kit';
 
-const Register = () => {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
@@ -94,6 +94,6 @@ const Register = () => {
       </p>
     </div>
   );
-};
+}
 
 export default Register;

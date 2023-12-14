@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { fetchGameById } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 
-const GameDetails = () => {
+function GameDetails() {
   const dispatch = useDispatch();
   const { gameId } = useParams();
   const gameDetails = useSelector((state) => state.games.gameById);
@@ -33,6 +33,6 @@ const GameDetails = () => {
       )}
     </div>
   );
-};
+}
 
 export default GameDetails;
