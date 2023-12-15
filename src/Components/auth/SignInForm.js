@@ -34,11 +34,10 @@ function Login() {
           expiresIn: 1440,
           authState: {
             userEmail: data.user_email,
-            userId: data.userId,
+            userId: data.user_id,
+            isAdmin: data.is_admin,
           },
         });
-
-        localStorage.setItem('userId', data.userId);
 
         navigate('/games');
       } else {

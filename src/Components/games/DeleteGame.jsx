@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 
 const DeleteGame = ({ gameId, onDeleteGame }) => {
+  const auth = useAuthUser();
+  const header = useAuthHeader();
   const handleDelete = async () => {
     try {
       const response = await fetch(`http://localhost:3000/games/${gameId}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-USER-EMAIL': auth().userEmail,
+          'X-USER-TOKEN': header().split(' ')[1],
+        },
       });
 
       if (response.ok) {
