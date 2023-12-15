@@ -4,11 +4,10 @@ import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 
 function DeleteGame({ gameId, onDeleteGame }) {
   const auth = useAuthUser();
-  const userId = auth().userId;
   const header = useAuthHeader();
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/games/${gameId}`+`?user_id=${userId}`, {
+      const response = await fetch(`http://localhost:3000/games/${gameId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
