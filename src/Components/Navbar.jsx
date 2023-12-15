@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/logo.JPG';
 
-const Navbar = () => {
+function Navbar() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -76,6 +76,6 @@ const Navbar = () => {
       </div>
     </>
   );
-};
+}
 
 export default Navbar;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 
-const DeleteGame = ({ gameId, onDeleteGame }) => {
+function DeleteGame({ gameId, onDeleteGame }) {
   const auth = useAuthUser();
   const header = useAuthHeader();
   const handleDelete = async () => {
@@ -30,7 +30,7 @@ const DeleteGame = ({ gameId, onDeleteGame }) => {
   return (
     <button type="button" onClick={handleDelete}>Delete</button>
   );
-};
+}
 
 DeleteGame.propTypes = {
   gameId: PropTypes.number.isRequired,

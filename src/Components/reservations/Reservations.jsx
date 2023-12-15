@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthUser } from 'react-auth-kit';
 import Navbar from '../Navbar';
 /* eslint-disable */
 const Reservations = () => {
@@ -7,14 +8,16 @@ const Reservations = () => {
   const [editingId, setEditingId] = useState(null);
   const [editFormData, setEditFormData] = useState({ reservation_date: '', setup_config: '' });
   const navigate = useNavigate();
+  const auth = useAuthUser();
+  const userId = auth().userId
 
   useEffect(() => {
-    fetchReservations();
+    fetchReservations(auth().userId);
   }, []);
 
   const fetchReservations = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/reservations', {
+      const response = await fetch('http://localhost:3000/api/reservations?user_id=' + userId.toString(), {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

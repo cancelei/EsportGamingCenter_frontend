@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchGameById } from '../../redux/fts/gamesSlice';
 
-const GameItem = ({ game, classNames }) => {
+function GameItem({ game, classNames }) {
   const { id } = JSON.parse(localStorage.getItem('Token')) || {};
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const GameItem = ({ game, classNames }) => {
       </button>
     </li>
   );
-};
+}
 
 GameItem.propTypes = {
   game: PropTypes.shape({

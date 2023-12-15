@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 import Navbar from '../Navbar';
 
-const ReservationForm = () => {
+function ReservationForm() {
   const [reservationDate, setReservationDate] = useState('');
   const [setupConfig, setSetupConfig] = useState('');
   const [platform, setPlatform] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const auth = useAuthUser();
+  const header = useAuthHeader();
 
   const gameId = new URLSearchParams(location.search).get('gameId');
-  const userId = localStorage.getItem('userId');
+  const { userId } = auth();
 
   useEffect(() => {
     if (!userId) {
@@ -21,6 +24,7 @@ const ReservationForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(auth().userId);
 
     const reservationData = {
       reservation: {
@@ -38,6 +42,8 @@ const ReservationForm = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'X-USER-EMAIL': auth().userEmail,
+          'X-USER-TOKEN': header().split(' ')[1],
         },
         body: JSON.stringify(reservationData),
       });
@@ -101,6 +107,6 @@ const ReservationForm = () => {
       </div>
     </>
   );
-};
+}
 
 export default ReservationForm;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import './GameCarousel.css';
 
-const GameCarousel = ({ games }) => {
+function GameCarousel({ games }) {
   const navigate = useNavigate();
 
   const settings = {
@@ -53,7 +53,7 @@ const GameCarousel = ({ games }) => {
       </Slider>
     </div>
   );
-};
+}
 
 const SampleNextArrow = (props) => {
   const { className, onClick } = props;
