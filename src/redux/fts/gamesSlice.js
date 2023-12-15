@@ -9,20 +9,32 @@ const initialState = {
   error: null,
 };
 
-export const fetchGames = createAsyncThunk('games/fetchGames', async () => {
-  const url = 'http://127.0.0.1:3000/api/games';
+// Asumiendo que tienes una ruta en Rails configurada como '/api/games'
+export const fetchGames = createAsyncThunk('games/fetchGames', async (email, auth) => {
+  const url = 'http://127.0.0.1:3000/api/games'; // URL actualizada para el espacio de nombres 'api'
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        'X-USER-EMAIL': email,
+        'X-USER-TOKEN': auth,
+      },
+    });
     return response.data;
   } catch (error) {
     throw Error(error);
   }
 });
 
-export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId) => {
+// Asumiendo que tienes una ruta en Rails configurada como '/api/games/:id'
+export const fetchGameById = createAsyncThunk('games/fetchGameById', async (gameId, email, auth) => {
   const url = `http://127.0.0.1:3000/api/games/${gameId}`;
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(url, {
+      headers: {
+        'X-USER-EMAIL': email,
+        'X-USER-TOKEN': auth,
+      },
+    });
     return response.data;
   } catch (error) {
     throw Error(error);
