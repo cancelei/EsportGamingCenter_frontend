@@ -5,7 +5,7 @@ import './GamesListComponent.css';
 import background from '../../assets/background.webp';
 import Navbar from '../Navbar';
 
-const GamesListComponent = () => {
+function GamesListComponent() {
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
 
@@ -54,6 +54,6 @@ const GamesListComponent = () => {
       </div>
     </>
   );
-};
+}
 
 export default GamesListComponent;

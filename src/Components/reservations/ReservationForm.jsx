@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthUser, useAuthHeader } from 'react-auth-kit';
 import Navbar from '../Navbar';
 
-const ReservationForm = () => {
+function ReservationForm() {
   const [reservationDate, setReservationDate] = useState('');
   const [setupConfig, setSetupConfig] = useState('');
   const [platform, setPlatform] = useState('');
@@ -13,7 +13,14 @@ const ReservationForm = () => {
   const header = useAuthHeader();
 
   const gameId = new URLSearchParams(location.search).get('gameId');
-  const userId = auth().userId;
+  const { userId } = auth();
+
+  useEffect(() => {
+    if (!userId) {
+      console.log('Please log in to make a reservation.');
+      navigate('/login');
+    }
+  }, [userId, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -100,6 +107,6 @@ const ReservationForm = () => {
       </div>
     </>
   );
-};
+}
 
 export default ReservationForm;

@@ -6,7 +6,7 @@ import { fetchGames } from '../../redux/fts/gamesSlice';
 import '../../assets/css/carousel.css';
 import Navbar from '../Navbar';
 
-const MainPage = () => {
+function MainPage() {
   const dispatch = useDispatch();
   const { games } = useSelector((state) => state.games);
   const auth = useAuthUser();
@@ -25,6 +25,6 @@ const MainPage = () => {
       </div>
     </>
   );
-};
+}
 
 export default MainPage;
