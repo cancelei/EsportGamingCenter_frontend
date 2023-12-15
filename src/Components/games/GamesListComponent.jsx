@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
+import { useAuthUser } from 'react-auth-kit';
 import './GamesListComponent.css';
 import background from '../../assets/background.webp';
 import Navbar from '../Navbar';
@@ -8,6 +9,7 @@ import Navbar from '../Navbar';
 function GamesListComponent() {
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
+  const auth = useAuthUser();
 
   const fetchGames = async () => {
     try {
@@ -35,6 +37,11 @@ function GamesListComponent() {
   const handleGameClick = (gameId) => {
     navigate(`/details/${gameId}`);
   };
+
+  if (!auth().isAdmin) {
+    return <Navigate to="/games" />;
+  }
+
 /* eslint-disable */
   return (
     <>

@@ -29,6 +29,7 @@ function AddGameForm() {
             description,
             image_url: imageUrl,
           },
+          user_id: auth().userId,
         }),
       });
 
