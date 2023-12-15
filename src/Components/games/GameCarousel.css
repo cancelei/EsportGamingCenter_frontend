@@ -1,0 +1,333 @@
+:root {
+  --font-color: #000;
+  --lemon-green: #97c004;
+}
+
+body {
+  margin: 0;
+  font-family:
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.custom-arrow {
+  background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  font-size: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.custom-arrow.next {
+  right: 25px;
+}
+
+.custom-arrow.prev {
+  left: 25px;
+}
+
+.game-slide {
+  padding: 15px;
+  text-align: center;
+}
+
+.game-slide img {
+  max-width: 100%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.slick-slider {
+  background-color: rgb(49 73 223 / 46%);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.slick-dots {
+  background-color: rgb(49 73 223 / 46%);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.slick-slide h3 {
+  background-color: rgb(255 255 255 / 66%);
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}
+
+.slick-slide p {
+  background-color: rgb(255 255 255 / 66%);
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+li {
+  flex-direction: column;
+}
+
+/* Navbar styles */
+.sidebar-logo-container {
+  width: 200px;
+  height: 150px;
+}
+
+.sidebar-logo {
+  width: 100%;
+}
+
+.side-bar {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #fff;
+  height: 100vh;
+  padding-top: 40px;
+  gap: 50px;
+  box-shadow: 2px 2px 8px gray;
+  background-image: url('/src/space_Bg.webp');
+}
+
+.side-bar a {
+  color: white;
+}
+
+.side-bar p {
+  color: white;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: antiquewhite;
+}
+
+.Add-game-container {
+  width: 60%;
+  z-index: 0;
+}
+
+.delete-game-container,
+.reservation-page-container,
+.login-page-container,
+.details-all-page {
+  width: 80%;
+}
+
+.main-title {
+  margin-left: 3%;
+  color: gold;
+}
+
+.sidebar-links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding: 0 10%;
+}
+
+.nav-link {
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--font-color);
+  cursor: pointer;
+  padding: 8px;
+  width: 100%;
+}
+
+.license-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mob-nav {
+  display: none;
+}
+
+.active {
+  background-color: #87de15;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.license {
+  font-size: 13px;
+  margin: 0;
+  color: var(--font-color);
+}
+
+.list-group-item {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.reserveButton {
+  background: #87de15;
+  padding: 12px;
+  width: 30%;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.reservation-page-container {
+  margin-left: 2.5%;
+  overflow: auto;
+  height: 100%;
+  width: 97%;
+}
+
+.reservation-page-container img {
+  width: 35%;
+}
+
+.reservation-page-container li {
+  margin-bottom: 2%;
+}
+
+.reservation-actions button {
+  margin-right: 1%;
+  margin-top: 0.5%;
+}
+
+@media only screen and (max-width: 767px) {
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .side-bar {
+    width: 100%;
+    display: none;
+  }
+
+  .side-bar.visible {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+  }
+
+  .Add-game-container,
+  .delete-game-container,
+  .details-all-page,
+  .login-page-container {
+    width: 100%;
+  }
+
+  .reservation-page-container li {
+    margin-left: 5%;
+    margin-top: 10%;
+    list-style: none;
+  }
+
+  .main-page-container {
+    max-width: 100vw;
+    width: 100%;
+    padding-top: 30%;
+  }
+
+  .mob-nav {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    background-color: #fff;
+    padding-right: 16px;
+    z-index: 2;
+  }
+
+  .license-container {
+    display: none;
+  }
+
+  .humburger {
+    padding: 5px 0;
+    font-size: 45px;
+    color: #87de15;
+    z-index: 1;
+    position: fixed;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /* Details Page mb */
+  .details-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .img-container {
+    width: 100%;
+  }
+
+  .details-container {
+    width: 90%;
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .game-name,
+  .game-model {
+    text-align: center;
+  }
+
+  .reserveButton {
+    background: #87de15;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .Details img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgb(207 48 48 / 80%);
+    border-radius: 8px;
+  }
+}

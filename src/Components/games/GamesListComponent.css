@@ -1,0 +1,73 @@
+.games-list-container {
+  text-align: center;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  filter: brightness(0.9);
+  min-width: 100vw;
+  overflow: auto;
+  height: 100%;
+}
+
+.games-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.game-list-item {
+  display: flex;
+  background: #f0f0f0;
+  margin: 15px 450px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(187 255 178 / 66%);
+}
+
+.game-image {
+  margin: auto;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 5px;
+}
+
+.game-header {
+  color: black;
+  margin: 5px 0;
+}
+
+.game-description {
+  color: black;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.delete-button {
+  width: 35%;
+  margin: auto;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.new-game-button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .game-list-item {
+    margin: 15px 0;
+  }
+}
